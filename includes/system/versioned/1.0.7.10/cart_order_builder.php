@@ -159,7 +159,7 @@ EOSQL;
       $builder = new cart_order_builder($order);
       $builder->build_info();
 
-      $order->content_type = $_SESSION['cart']->get_content_type();
+      $order->content_type = array_key_exists('cart', $_SESSION) ? $_SESSION['cart']->get_content_type() : 'n/a' ;
       $builder->build_addresses();
 
       $builder->build_products();

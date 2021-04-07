@@ -19,6 +19,7 @@
 // autoload classes in the classes or modules directories
   require 'includes/functions/autoloader.php';
   spl_autoload_register('tep_autoload_catalog');
+  require 'vendor/autoload.php';
 
 // include the database functions
   require 'includes/functions/database.php';
