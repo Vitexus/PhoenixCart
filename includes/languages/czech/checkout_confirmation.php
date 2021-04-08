@@ -28,4 +28,11 @@ const HEADING_PAYMENT_INFORMATION = 'Platební informace';
 const HEADING_ORDER_COMMENTS = 'Poznámka';
 
 const TEXT_EDIT = 'Upravit';
-const EDIT_ITEM = '[upravit]';
+//const EDIT_ITEM = '[upravit]';
+
+const IMAGE_BUTTON_FINALISE_ORDER ='Zaplatit %s';
+
+const HEADING_QTY = 'Množství';
+
+const LIST_PRODUCTS = 'Produkty';
+const ORDER_DETAILS = 'Detaily objednávky';

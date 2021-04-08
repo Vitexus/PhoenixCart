@@ -17,14 +17,12 @@ const HEADING_TITLE = 'Můj osobní adresář';
 
 const PRIMARY_ADDRESS_TITLE = 'Hlavní adresa';
 define('PRIMARY_ADDRESS_DESCRIPTION',
-    'Tato adresa je nastavena pro zasílání a fakturování objednaného zboží.<br /><br />Také se použije pro výpočet daně a způsobu dodání.',
-    true);
+    'Tato adresa je nastavena pro zasílání a fakturování objednaného zboží.<br /><br />Také se použije pro výpočet daně a způsobu dodání.');
 
 const ADDRESS_BOOK_TITLE = 'Vložené adresy';
 
 const PRIMARY_ADDRESS = '(Hlavní adresa)';
 
 define('TEXT_MAXIMUM_ENTRIES',
-    '<span class="inputRequirement">POZNÁMKA:</span> Maximálně zde můžete mít uloženo %s addres.',
-    true);
+    '<span class="inputRequirement">POZNÁMKA:</span> Maximálně zde můžete mít uloženo %s adres.');
 ?>

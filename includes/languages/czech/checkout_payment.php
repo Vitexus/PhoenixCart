@@ -17,8 +17,7 @@ const HEADING_TITLE = 'Způsob platby';
 
 const TABLE_HEADING_BILLING_ADDRESS = 'Hlavní adresa';
 define('TEXT_SELECTED_BILLING_DESTINATION',
-    'Vyberte nebo vytvořte hlavní adresu, je-li odlišná od adresy dodání.',
-    true);
+    'Vyberte nebo vytvořte hlavní adresu, je-li odlišná od adresy dodání.');
 const TITLE_BILLING_ADDRESS = 'Hlavní adresa:';
 
 const TABLE_HEADING_PAYMENT_METHOD = 'Vyberte způsob platby';
@@ -31,5 +30,5 @@ const PLACEHOLDER_COMMENTS = 'Poznámka';
 
 const TITLE_CONTINUE_CHECKOUT_PROCEDURE = 'Pokračujte v nákupu';
 const TEXT_CONTINUE_CHECKOUT_PROCEDURE = 'potvrďte objednávku';
-
+const BUTTON_CONTINUE_CHECKOUT_PROCEDURE = 'Potvrďte objednávku';
 const IMAGE_BUTTON_CONFIRMATION = 'souhrn';

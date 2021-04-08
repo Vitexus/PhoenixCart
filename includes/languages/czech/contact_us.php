@@ -13,13 +13,16 @@
 const HEADING_TITLE = 'Kontaktujte nás';
 const NAVBAR_TITLE = 'Kontaktujte nás';
 const TEXT_SUCCESS = 'Váš dotaz byl odeslán provozovateli obchodu.';
-define('EMAIL_SUBJECT', 'Dotaz ze serveru '.STORE_NAME);
+define('EMAIL_SUBJECT', 'Dotaz ze serveru %s');
 
 const ENTRY_NAME = 'Jméno:';
 const ENTRY_EMAIL = 'E-Mail:';
 const ENTRY_ENQUIRY = 'Dotaz/zpráva:';
+const ENTRY_NAME_TEXT = '';
+const ENTRY_EMAIL_TEXT = '';
+
+const ENTRY_ENQUIRY_TEXT = '';
 
 define('ERROR_ACTION_RECORDER',
-    'Vaše zpráva nebyla odeslána! Chcete-li odeslat dotaz, zkuste to znovu za %s minut. Omlouváme se za případné nepohodlí, toto opatření slouží jako ochrana před automatizovanými útoky na poštovní server.',
-    true);
+    'Vaše zpráva nebyla odeslána! Chcete-li odeslat dotaz, zkuste to znovu za %s minut. Omlouváme se za případné nepohodlí, toto opatření slouží jako ochrana před automatizovanými útoky na poštovní server.');
 ?>
