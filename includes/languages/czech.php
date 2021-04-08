@@ -24,7 +24,7 @@
 const DATE_FORMAT_SHORT = '%d.%m.%Y';
 const DATE_FORMAT_LONG = '%A %d %B, %Y';
 const DATE_FORMAT = 'd.m.Y';
-define('DATE_TIME_FORMAT', DATE_FORMAT_SHORT . ' %H:%M:%S');
+// define('DATE_TIME_FORMAT', DATE_FORMAT_SHORT . ' %H:%M:%S');
 const JQUERY_DATEPICKER_I18N_CODE = 'cs';
 const JQUERY_DATEPICKER_FORMAT = 'mm.dd.yy';
 
@@ -50,7 +50,7 @@ const HTML_PARAMS = 'dir="ltr" lang="cs"';
 const CHARSET = 'utf-8';
 
 // page title
-define('TITLE', STORE_NAME);
+// define('TITLE', STORE_NAME);
 
 // header text in includes/header.php
 const HEADER_TITLE_CREATE_ACCOUNT = 'Založit účet';
@@ -84,7 +84,7 @@ const TYPE_BELOW = 'Napsat níže';
 // javascript messages
 const JS_ERROR = 'Ve formuláři je chyba.\n\nOpravte následující:\n\n';
 
-define('JS_REVIEW_TEXT', '* The \'Review Text\' musí mít nejméně ' . REVIEW_TEXT_MIN_LENGTH . ' znaků.\n');
+// define('JS_REVIEW_TEXT', '* The \'Review Text\' musí mít nejméně ' . REVIEW_TEXT_MIN_LENGTH . ' znaků.\n');
 const JS_REVIEW_RATING = '* Přepočítat zboží\n';
 
 const JS_ERROR_NO_PAYMENT_MODULE_SELECTED = '* Prosíme vyberte typ platby.\n';
@@ -106,39 +106,39 @@ const ENTRY_GENDER = 'Pohlaví:';
 const ENTRY_GENDER_ERROR = 'Vyberte pohlaví';
 const ENTRY_GENDER_TEXT = '';
 const ENTRY_FIRST_NAME = 'Jméno:';
-define('ENTRY_FIRST_NAME_ERROR', 'Vaše jméno musí mít nejméně ' . ENTRY_FIRST_NAME_MIN_LENGTH . ' znaků.');
+// define('ENTRY_FIRST_NAME_ERROR', 'Vaše jméno musí mít nejméně ' . ENTRY_FIRST_NAME_MIN_LENGTH . ' znaků.');
 const ENTRY_FIRST_NAME_TEXT = '';
 const ENTRY_LAST_NAME = 'Příjmení:';
-define('ENTRY_LAST_NAME_ERROR', 'Vaše příjmení musí mít nejméně ' . ENTRY_LAST_NAME_MIN_LENGTH . ' znaků.');
+// define('ENTRY_LAST_NAME_ERROR', 'Vaše příjmení musí mít nejméně ' . ENTRY_LAST_NAME_MIN_LENGTH . ' znaků.');
 const ENTRY_LAST_NAME_TEXT = '';
 const ENTRY_DATE_OF_BIRTH = 'Datum narození:';
 const ENTRY_DATE_OF_BIRTH_ERROR = 'Datum narození ve tvaru: MM/DD/YYYY (eg 05/21/1970)';
 const ENTRY_DATE_OF_BIRTH_TEXT = '* (např. 05/21/1970)';
 const ENTRY_EMAIL_ADDRESS = 'E-Mail:';
-define('ENTRY_EMAIL_ADDRESS_ERROR', 'E-Mail musí mít nejméně ' . ENTRY_EMAIL_ADDRESS_MIN_LENGTH . ' znaků.');
+// define('ENTRY_EMAIL_ADDRESS_ERROR', 'E-Mail musí mít nejméně ' . ENTRY_EMAIL_ADDRESS_MIN_LENGTH . ' znaků.');
 const ENTRY_EMAIL_ADDRESS_CHECK_ERROR = 'E-Mail je špatně, opravte jej.';
 const ENTRY_EMAIL_ADDRESS_ERROR_EXISTS = 'Váš E-Mail je již v databázi.';
 const ENTRY_EMAIL_ADDRESS_TEXT = '';
 const ENTRY_STREET_ADDRESS = 'Ulice:';
-define('ENTRY_STREET_ADDRESS_ERROR', 'Ulice musí mít nejméně ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ' znaků.');
+// define('ENTRY_STREET_ADDRESS_ERROR', 'Ulice musí mít nejméně ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ' znaků.');
 const ENTRY_STREET_ADDRESS_TEXT = '';
 const ENTRY_SUBURB = 'Čtvrť:';
 const ENTRY_SUBURB_TEXT = '';
 const ENTRY_POST_CODE = 'PSČ:';
-define('ENTRY_POST_CODE_ERROR', 'PSČ musí mít nejméně ' . ENTRY_POSTCODE_MIN_LENGTH . ' znaků.');
+// define('ENTRY_POST_CODE_ERROR', 'PSČ musí mít nejméně ' . ENTRY_POSTCODE_MIN_LENGTH . ' znaků.');
 const ENTRY_POST_CODE_TEXT = '';
 const ENTRY_CITY = 'Město:';
-define('ENTRY_CITY_ERROR', 'Město musí mít nejméně ' . ENTRY_CITY_MIN_LENGTH . ' znaků.');
+// define('ENTRY_CITY_ERROR', 'Město musí mít nejméně ' . ENTRY_CITY_MIN_LENGTH . ' znaků.');
 const ENTRY_CITY_TEXT = '';
 const ENTRY_STATE = 'Stát:';
-define('ENTRY_STATE_ERROR', 'Stát musí mít nejméně ' . ENTRY_STATE_MIN_LENGTH . ' znaků.');
+// define('ENTRY_STATE_ERROR', 'Stát musí mít nejméně ' . ENTRY_STATE_MIN_LENGTH . ' znaků.');
 const ENTRY_STATE_ERROR_SELECT = 'Please select a state from the States pull down menu.';
 const ENTRY_STATE_TEXT = '';
 const ENTRY_COUNTRY = 'Země:';
 const ENTRY_COUNTRY_ERROR = 'Vyberte zemi v menu.';
 const ENTRY_COUNTRY_TEXT = '';
 const ENTRY_TELEPHONE_NUMBER = 'Telefon:';
-define('ENTRY_TELEPHONE_NUMBER_ERROR', 'Telefonní číslo musí mít nejméně ' . ENTRY_TELEPHONE_MIN_LENGTH . ' znaků.');
+// define('ENTRY_TELEPHONE_NUMBER_ERROR', 'Telefonní číslo musí mít nejméně ' . ENTRY_TELEPHONE_MIN_LENGTH . ' znaků.');
 const ENTRY_TELEPHONE_NUMBER_TEXT = '';
 const ENTRY_FAX_NUMBER = 'Fax:';
 const ENTRY_FAX_NUMBER_TEXT = '';
@@ -147,17 +147,17 @@ const ENTRY_NEWSLETTER_TEXT = '';
 const ENTRY_NEWSLETTER_YES = 'Přihlásit k zasílání';
 const ENTRY_NEWSLETTER_NO = 'Odhlásit zasílání';
 const ENTRY_PASSWORD = 'Heslo:';
-define('ENTRY_PASSWORD_ERROR', 'Vaše heslo musí mít nejméně ' . ENTRY_PASSWORD_MIN_LENGTH . ' znaků.');
+// define('ENTRY_PASSWORD_ERROR', 'Vaše heslo musí mít nejméně ' . ENTRY_PASSWORD_MIN_LENGTH . ' znaků.');
 const ENTRY_PASSWORD_ERROR_NOT_MATCHING = 'Hesla nejsou stejná.';
 const ENTRY_PASSWORD_TEXT = '';
 const ENTRY_PASSWORD_CONFIRMATION = 'Heslo znovu:';
 const ENTRY_PASSWORD_CONFIRMATION_TEXT = '';
 const ENTRY_PASSWORD_CURRENT = 'Původní heslo:';
 const ENTRY_PASSWORD_CURRENT_TEXT = '';
-define('ENTRY_PASSWORD_CURRENT_ERROR', 'Vaše heslo musí mít nejméně ' . ENTRY_PASSWORD_MIN_LENGTH . ' znaků.');
+// define('ENTRY_PASSWORD_CURRENT_ERROR', 'Vaše heslo musí mít nejméně ' . ENTRY_PASSWORD_MIN_LENGTH . ' znaků.');
 const ENTRY_PASSWORD_NEW = 'Nové heslo:';
 const ENTRY_PASSWORD_NEW_TEXT = '';
-define('ENTRY_PASSWORD_NEW_ERROR', 'Vaše nové heslo musí mít nejméně ' . ENTRY_PASSWORD_MIN_LENGTH . ' znaků.');
+// define('ENTRY_PASSWORD_NEW_ERROR', 'Vaše nové heslo musí mít nejméně ' . ENTRY_PASSWORD_MIN_LENGTH . ' znaků.');
 const ENTRY_PASSWORD_NEW_ERROR_NOT_MATCHING = 'Hesla nejsou stejná.';
 const PASSWORD_HIDDEN = '--HIDDEN--';
 
@@ -205,6 +205,7 @@ const IMAGE_BUTTON_TELL_A_FRIEND = 'Dejte vědět příteli';
 const IMAGE_BUTTON_UPDATE = 'obnovit';
 const IMAGE_BUTTON_UPDATE_CART = 'Obnovit košík';
 const IMAGE_BUTTON_WRITE_REVIEW = 'Zapsat hodnocení';
+const IMAGE_BUTTON_UPDATE_PREFERENCES = 'Obnov preference';
 
 const SMALL_IMAGE_BUTTON_DELETE = 'Smazat';
 const SMALL_IMAGE_BUTTON_EDIT = 'Upravit';
@@ -225,6 +226,8 @@ const TEXT_SORT_PRODUCTS = 'seřadit';
 const TEXT_DESCENDINGLY = 'sestupně';
 const TEXT_ASCENDINGLY = 'vzestupně';
 const TEXT_BY = ' by ';
+// grid/list
+const TEXT_SORT_BY = 'seřadit podle';
 
 const TEXT_REVIEW_BY = 'od %s';
 const TEXT_REVIEW_WORD_COUNT = '%s slov';
@@ -276,6 +279,7 @@ const TABLE_HEADING_LATEST_ADDED = 'Poslední zboží';
 const TABLE_HEADING_DATE_AVAILABLE = 'Nejnovější zboží';
 const TABLE_HEADING_CUSTOM_DATE = 'Podle data';
 const TABLE_HEADING_SORT_ORDER = 'Pořadí';
+const TABLE_HEADING_ORDERED = 'Nejprodávanější';
 
 // product notifications
 const PRODUCT_SUBSCRIBED = '%s bylo přidána do vašeho seznamu';
@@ -287,41 +291,55 @@ const PRODUCT_REMOVED = '%s odebráno z vašeho košíku';
 const MODULE_CONTENT_BOOTSTRAP_ROW_DESCRIPTION = '';
 
 // sorting product_listing module
+// sitewide product listing
+const LISTING_SORT_DOWN = '<i class="fas fa-level-down-alt text-primary"></i>';
+const LISTING_SORT_UP = '<i class="fas fa-level-up-alt text-primary"></i>';
+const LISTING_SORT_UNSELECTED = '<i class="fas fa-level-up-alt text-black-50"></i>';
+
+// for new style internal pages
+const LINK_TEXT_EDIT = '<small><a class="%s" href="%s">Edit</a></small>';
+const SHIPPING_FA_ICON = '<i class="fas fa-shipping-fast fa-fw fa-3x float-right text-black-50"></i>';
+const PAYMENT_FA_ICON = '<i class="fas fa-file-invoice-dollar fa-fw fa-3x float-right text-black-50"></i>';
+
+const ENTRY_COMMENTS = 'Měli bychom něco vědět?';
+const ENTRY_COMMENTS_PLACEHOLDER = 'Přidejte komentář';
+const TABLE_HEADING_OR = '-nebo-';
+
 
 /*
 ************************************************************************
-************** Custom Filenames can be defined below here **************
+************** Custom Filenames can be // defined below here **************
 **************               Raymond Burns                **************
 ************************************************************************
 */
 // SEO Header Tags Reloaded
   //header titles
-const HEADER_CART_CONTENTS = '<i class="glyphicon fa-shopping-cart"></i> %s kusů<span class="caret"></span>';
-const HEADER_CART_NO_CONTENTS = '<i class="glyphicon fa-shopping-cart"></i><span class="hidden-lg hidden-md hidden-sm"> košík</span><span class="caret"></span>';
-const HEADER_ACCOUNT_LOGGED_OUT = '<span class="hidden-sm"> přihlásit se/registrace</span> <span class="caret"></span>';
-const HEADER_ACCOUNT_LOGGED_IN = '<i class="glyphicon glyphicon-user"></i> %s <span class="caret"></span>';
-const HEADER_SITE_SETTINGS = '<i class="glyphicon glyphicon-cog"></i><span class="hidden-sm"> Site Settings</span> <span class="caret"></span>';
-const HEADER_TOGGLE_NAV = 'Toggle Navigation';
-const HEADER_HOME = '<i class="glyphicon glyphicon-home"></i><span class="hidden-sm"> Home</span>';
-const HEADER_WHATS_NEW = '<i class="glyphicon glyphicon-certificate"></i><span class="hidden-sm">  Nové zboží</span>';
-const HEADER_SPECIALS = '<i class="glyphicon glyphicon-fire"></i><span class="hidden-sm"> Speciální nabídky</span>';
-const HEADER_REVIEWS = '<i class="glyphicon glyphicon-comment"></i><span class="hidden-sm"> Hodnocení</span>';
+//const HEADER_CART_CONTENTS = '<i class="glyphicon fa-shopping-cart"></i> %s kusů<span class="caret"></span>';
+//const HEADER_CART_NO_CONTENTS = '<i class="glyphicon fa-shopping-cart"></i><span class="hidden-lg hidden-md hidden-sm"> košík</span><span class="caret"></span>';
+//const HEADER_ACCOUNT_LOGGED_OUT = '<span class="hidden-sm"> přihlásit se/registrace</span> <span class="caret"></span>';
+//const HEADER_ACCOUNT_LOGGED_IN = '<i class="glyphicon glyphicon-user"></i> %s <span class="caret"></span>';
+//const HEADER_SITE_SETTINGS = '<i class="glyphicon glyphicon-cog"></i><span class="hidden-sm"> Site Settings</span> <span class="caret"></span>';
+//const HEADER_TOGGLE_NAV = 'Toggle Navigation';
+//const HEADER_HOME = '<i class="glyphicon glyphicon-home"></i><span class="hidden-sm"> Home</span>';
+//const HEADER_WHATS_NEW = '<i class="glyphicon glyphicon-certificate"></i><span class="hidden-sm">  Nové zboží</span>';
+//const HEADER_SPECIALS = '<i class="glyphicon glyphicon-fire"></i><span class="hidden-sm"> Speciální nabídky</span>';
+//const HEADER_REVIEWS = '<i class="glyphicon glyphicon-comment"></i><span class="hidden-sm"> Hodnocení</span>';
 // header dropdowns
-const HEADER_ACCOUNT_LOGIN = '<i class="glyphicon glyphicon-log-in"></i> Přihlásit';
-const HEADER_ACCOUNT_LOGOFF = '<i class="glyphicon glyphicon-log-out"></i> Odhlásit';
-const HEADER_ACCOUNT = 'Můj účet';
-const HEADER_ACCOUNT_HISTORY = 'Moje objednávky';
-const HEADER_ACCOUNT_EDIT = 'Moje údaje';
-const HEADER_ACCOUNT_ADDRESS_BOOK = 'Můj Adresář';
-const HEADER_ACCOUNT_PASSWORD = 'Heslo';
-const HEADER_ACCOUNT_REGISTER = '<i class="glyphicon glyphicon-pencil"></i> Registrace';
-const HEADER_CART_HAS_CONTENTS = '%s item(s), %s';
-const HEADER_CART_VIEW_CART = 'Košík';
-const HEADER_CART_CHECKOUT = '<i class="glyphicon glyphicon-chevron-right"></i> Pokladna';
-const USER_LOCALIZATION = '<abbr title="Vybraný jazyk">L:</abbr> %s <abbr title="Vybraná měna">C:</abbr> %s';
+//const HEADER_ACCOUNT_LOGIN = '<i class="glyphicon glyphicon-log-in"></i> Přihlásit';
+//const HEADER_ACCOUNT_LOGOFF = '<i class="glyphicon glyphicon-log-out"></i> Odhlásit';
+//const HEADER_ACCOUNT = 'Můj účet';
+//const HEADER_ACCOUNT_HISTORY = 'Moje objednávky';
+//const HEADER_ACCOUNT_EDIT = 'Moje údaje';
+//const HEADER_ACCOUNT_ADDRESS_BOOK = 'Můj Adresář';
+//const HEADER_ACCOUNT_PASSWORD = 'Heslo';
+//const HEADER_ACCOUNT_REGISTER = '<i class="glyphicon glyphicon-pencil"></i> Registrace';
+//const HEADER_CART_HAS_CONTENTS = '%s item(s), %s';
+//const HEADER_CART_VIEW_CART = 'Košík';
+//const HEADER_CART_CHECKOUT = '<i class="glyphicon glyphicon-chevron-right"></i> Pokladna';
+//const USER_LOCALIZATION = '<abbr title="Vybraný jazyk">L:</abbr> %s <abbr title="Vybraná měna">C:</abbr> %s';
 
 // CCGV
-const VOUCHER_BALANCE = 'Voucher Balance';
+const VOUCHER_BALANCE = 'Voucher Balanc';
 const BOX_HEADING_GIFT_VOUCHER = 'Dárkový poukaz účet';
 const GV_FAQ = 'Gift Voucher FAQ';
 const IMAGE_REDEEM_VOUCHER = 'Redeem';

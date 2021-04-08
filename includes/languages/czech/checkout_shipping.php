@@ -28,10 +28,8 @@ const TEXT_ENTER_SHIPPING_INFORMATION = '';
 const TABLE_HEADING_COMMENTS = 'Poznámka';
 
 const TITLE_CONTINUE_CHECKOUT_PROCEDURE = 'pokračujte v nákupu';
-define('TEXT_CONTINUE_CHECKOUT_PROCEDURE', 'máte-li vybraný způsob dodání.',
-    true);
-
+define('TEXT_CONTINUE_CHECKOUT_PROCEDURE', 'máte-li vybraný způsob dodání.');
+const BUTTON_CONTINUE_CHECKOUT_PROCEDURE = 'Pokračujte k platbě';
 define('ERROR_NO_SHIPPING_AVAILABLE_TO_SHIPPING_ADDRESS',
-    'Na tuto dodací adresu nelze zboží doručit. Prosíme vyberte nebo vytvořte novou dodací adresu.',
-    true);
+    'Na tuto dodací adresu nelze zboží doručit. Prosíme vyberte nebo vytvořte novou dodací adresu.');
 const IMAGE_BUTTON_PAYMENT = 'platba';
