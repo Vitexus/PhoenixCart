@@ -83,7 +83,7 @@
     }
 
     public function set_template_title() {
-      $GLOBALS['oscTemplate']->setTitle(TITLE);
+      $GLOBALS['oscTemplate']->setTitle( defined('TITLE') ? TITLE : 'Title not set' );
     }
 
     public function ensure_navigation_history() {

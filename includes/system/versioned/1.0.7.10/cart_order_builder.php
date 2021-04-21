@@ -75,11 +75,15 @@ EOSQL;
 
     public function build_addresses() {
       global $customer;
-
+      
+      if(is_null($customer)){
+          $customer = new \customer();
+      }
+      
       $this->order->customer = $customer->fetch_to_address(0);
       $this->order->billing = $customer->fetch_to_address($_SESSION['billto'] ?? null);
 
-      if ( !$_SESSION['sendto'] && ('virtual' !== $this->order->content_type) ) {
+      if ( !array_key_exists('sendto', $_SESSION) && ('virtual' !== $this->order->content_type) ) {
         $_SESSION['sendto'] = $customer->get('default_sendto');
       }
 
@@ -137,6 +141,10 @@ EOSQL;
     public function build_products() {
       $tax_address = $this->build_tax_address();
 
+      if(is_object($_SESSION['cart']) === false){
+          $_SESSION['cart'] = new shoppingCart();
+      }
+      
       foreach ($_SESSION['cart']->get_products() as $product) {
         $current = [];
         foreach (static::$column_keys as $order_key => $cart_key) {
@@ -159,7 +167,7 @@ EOSQL;
       $builder = new cart_order_builder($order);
       $builder->build_info();
 
-      $order->content_type = $_SESSION['cart']->get_content_type();
+      $order->content_type = array_key_exists('cart', $_SESSION) ? $_SESSION['cart']->get_content_type() : 'n/a' ;
       $builder->build_addresses();
 
       $builder->build_products();
