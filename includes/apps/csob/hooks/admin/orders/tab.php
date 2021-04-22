@@ -82,9 +82,6 @@ EOD;
             }
         }
 
-        $client = new \PureOSC\Payment(new \PureOSC\Order($oID));
-
-        $output .= \PureOSC\Payment::paymentStatusMeaning($client->requestStatus()) ;
 
         return $output;
     }
@@ -333,4 +330,3 @@ EOD;
 
 }
 
-?>

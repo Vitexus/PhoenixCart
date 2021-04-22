@@ -145,17 +145,19 @@ class csob extends abstract_payment_module {
         $this->setOrderStatusByPaymentState();
     }
 
+    /**
+     * 
+     * @return \PureOSC\Payment
+     */
     public function getPayment() {
         if (is_null($this->order)) {
             if (array_key_exists('order_id', $GLOBALS) === false) { //We need OrderNumber first
-                $this->getOrder()->save(); 
+                $this->getOrder()->save();
             }
         }
 
         if (is_object($this->payment) === false) {
             $this->payment = new \PureOSC\Payment($this->getOrder()); //Guarantor::ensure_global('order') not work here
-        } else {
-            
         }
         return $this->payment;
     }
@@ -247,7 +249,7 @@ class csob extends abstract_payment_module {
 
     public function setOrderStatusByPaymentState($forceStatus = null) {
         if (array_key_exists('order_id', $GLOBALS)) {
-          
+
             $paymentStatus = is_null($forceStatus) ? $this->getPayment()->getStatus() : $forceStatus;
         } else {
             $paymentStatus = null;
