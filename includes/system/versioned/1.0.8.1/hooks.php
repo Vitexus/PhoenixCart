@@ -146,13 +146,17 @@ EOSQL
 
     public function cat($action, $parameters = []) {
       $result = '';
-      foreach ( @(array)$this->_hooks[$this->_site][$action] as $callback ) {
+      
+    if(array_key_exists($action, $this->_hooks[$this->_site])){
+      foreach ( (array)$this->_hooks[$this->_site][$action] as $callback ) {
         $result .= call_user_func($callback, $parameters);
       }
-
       if ( $result ) {
-        return $result;
+          return $result;
       }
+     } 
+      
+
     }
 
     public function generate($action, $parameters = []) {
