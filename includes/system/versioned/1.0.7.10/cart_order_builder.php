@@ -51,6 +51,12 @@ EOSQL;
     }
 
     public function build_info() {
+        
+        //if(array_key_exists('currency', $GLOBALS) === false){
+            $_SESSION['currency'] = 'CZK';
+            print_r($GLOBALS['currencies']->currencies);
+        //}
+        
       $this->order->info = [
         'order_status' => DEFAULT_ORDERS_STATUS_ID,
         'currency' => $_SESSION['currency'],
@@ -141,7 +147,7 @@ EOSQL;
     public function build_products() {
       $tax_address = $this->build_tax_address();
 
-      if(is_object($_SESSION['cart']) === false){
+      if(!array_key_exists('cart', $_SESSION) || is_object($_SESSION['cart']) === false){
           $_SESSION['cart'] = new shoppingCart();
       }
       

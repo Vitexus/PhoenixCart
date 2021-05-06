@@ -59,9 +59,12 @@
         $address_query = tep_db_query($customer_data->build_read($customer_data->list_all_capabilities(), 'both', ['id' => (int)$this->id]));
       }
 
-      $this->data[$to] = array_filter(tep_db_fetch_array($address_query), function ($v) { return tep_not_null($v); });
-      if (!is_null($this->data[$to])) {
-        $this->preload_columns($this->data[$to]);
+      $address_data = tep_db_fetch_array($address_query);
+      if(!empty($address_data)){
+        $this->data[$to] = array_filter($address_data, function ($v) { return tep_not_null($v); });
+        if (!is_null($this->data[$to])) {
+          $this->preload_columns($this->data[$to]);
+        }
       }
     }
 

@@ -202,7 +202,7 @@ class Payment extends \OndraKoupil\Csob\Payment {
                 \Ease\Functions::cfg('MODULE_PAYMENT_CSOB_SECRET_KEY'),
                 \Ease\Functions::cfg('MODULE_PAYMENT_CSOB_PUBLIC_KEY'),
                 \Ease\Functions::cfg('STORE_NAME'),
-                tep_href_link('ext/modules/payment/csob/welcomeback.php', 'ceid=' . session_id(), null, true),
+                tep_href_link('payment_result.php', 'ceid=' . session_id(), null, true),
                 // URL adresa API - výchozí je adresa testovacího (integračního) prostředí,
                 // až budete připraveni přepnout se na ostré rozhraní, sem zadáte
                 // adresu ostrého API. Nezapomeňte také na ostrý veřejný klíč banky.
