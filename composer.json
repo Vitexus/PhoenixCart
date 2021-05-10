@@ -1,0 +1,31 @@
+{
+    "name": "purehtml/ce-phoenix",
+    "description": "eShop",
+    "type": "project",
+    "license": "GNU",
+    "authors": [
+        {
+            "name": "Vítězslav Dvořák",
+            "email": "info@vitexsoftware.cz"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "chillerlan/php-qrcode": "^4.3",
+        "vitexsoftware/ease-twbootstrap4-widgets-flexibee": "dev-abraflexi",
+        "adamstipak/webpay-php": "dev-master",
+        "vitexsoftware/ease-fluentpdo": "*",
+        "ondrakoupil/csob-eapi-paygate": "dev-master",
+        "robmorgan/phinx": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "PureOSC\\": "includes/classes/",
+            "PureOSC\\ui\\": "includes/classes/ui/",
+            "PureOSC\\AbraFlexi\\": "ext/abraflexi/",
+            "PureOSC\\Admin\\": "admin/includes/classes/",
+            "PureOSC\\Admin\\ui\\": "admin/includes/classes/ui/",
+            "PureOSC\\Admin\\flexibee\\": "admin/ext/flexibee/"
+        }
+    }
+}
