@@ -25,7 +25,9 @@
       $hooks =& Guarantor::ensure_global('hooks', 'shop');
       foreach ($this->_base_hook_directories as $directory) {
         $hooks->add_directory($directory);
-        $GLOBALS['class_index']->find_all_hooks_under($directory);
+        if(array_key_exists('class_index', $GLOBALS)){
+          $GLOBALS['class_index']->find_all_hooks_under($directory);
+        }
       }
 
       $GLOBALS['breadcrumb'] = new breadcrumb();

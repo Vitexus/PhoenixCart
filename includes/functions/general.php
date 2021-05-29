@@ -384,6 +384,7 @@
   function tep_require_login($parameters = null) {
     if (!isset($_SESSION['customer_id'])) {
       $_SESSION['navigation']->set_snapshot($parameters);
-      Href::redirect($GLOBALS['Linker']->build('login.php'));
+      
+      Href::redirect(Guarantor::ensure_global('Linker')->build('login.php'));
     }
   }
