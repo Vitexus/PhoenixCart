@@ -27,7 +27,7 @@
     }
 
     public function build($page = null, $parameters = [], $add_session_id = true) {
-      return new Href($this->prefix, $page, $parameters, $add_session_id);
+      return new Href($this->get_prefix(), $page, $parameters, $add_session_id);
     }
 
   }

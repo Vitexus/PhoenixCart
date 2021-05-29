@@ -108,12 +108,16 @@ EOSQL
         if ( 'php' === $pathinfo['extension'] ) {
           $class = "hook_{$this->_site}_{$group}_{$pathinfo['filename']}";
 
-          foreach ( get_class_methods(Guarantor::ensure_global($class)) as $method ) {
-            if ( substr($method, 0, $this->prefix_length) === self::PREFIX ) {
-              $action = substr($method, $this->prefix_length);
-              Guarantor::guarantee_all($this->_hooks, $this->_site, $action
-                )[$pathinfo['filename']] = [$GLOBALS[$class], $method];
-            }
+          if(class_exists($class) === false){
+//              throw new Exception('Requied class '.$class.' not found');
+          } else {
+              foreach ( get_class_methods(Guarantor::ensure_global($class)) as $method ) {
+                if ( substr($method, 0, $this->prefix_length) === self::PREFIX ) {
+                  $action = substr($method, $this->prefix_length);
+                  Guarantor::guarantee_all($this->_hooks, $this->_site, $action
+                    )[$pathinfo['filename']] = [$GLOBALS[$class], $method];
+                }
+              }
           }
         }
       }

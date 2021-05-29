@@ -28,11 +28,17 @@
     return Session::destroy();
   }
 
+  /**
+   * @deprecated since version 1.0.8.3
+   */
   function tep_session_recreate() {
     trigger_error('The tep_session_recreate function has been deprecated.', E_USER_DEPRECATED);
     Session::recreate();
   }
 
+  /**
+   * @deprecated since version 1.0.8.3
+   */
   function tep_reset_session_token() {
     trigger_error('The tep_reset_session_token function has been deprecated.', E_USER_DEPRECATED);
     Form::reset_session_token();
