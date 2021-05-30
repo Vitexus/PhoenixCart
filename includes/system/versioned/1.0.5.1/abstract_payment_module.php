@@ -75,7 +75,17 @@
       return false;
     }
 
-    public static function ensure_order_status($constant_name, $order_status_name) {
+    /**
+     * Ensure that STATUS is defined
+     * 
+     * @param string $constant_name
+     * @param string $order_status_name
+     * @param boolean $public_flag
+     * @param boolean $downloads_flag
+     * 
+     * @return int status ID
+     */
+    public static function ensure_order_status($constant_name, $order_status_name, $public_flag = 0, $downloads_flag = 0) {
       if (defined($constant_name)) {
         return constant($constant_name);
       }
@@ -89,7 +99,7 @@
         $flags_query = tep_db_query("DESCRIBE orders_status public_flag");
         if (tep_db_num_rows($flags_query) === 1) {
           $column_names = ', public_flag, downloads_flag';
-          $column_values = ', 0 AS public_flag, 0 AS downloads_flag';
+          $column_values = ', '.$public_flag.' AS public_flag, '.$downloads_flag.' AS downloads_flag';
         }
 
         $next_id = tep_db_fetch_array(tep_db_query("SELECT MAX(orders_status_id) + 1 AS next_id FROM orders_status"))['next_id'] ?? 1;

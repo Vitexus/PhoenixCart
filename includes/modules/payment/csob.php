@@ -309,7 +309,7 @@ class csob extends abstract_payment_module {
             ],
             'MODULE_PAYMENT_CSOB_ORDER_STATUS_ID' => [
                 'title' => 'Set Order Status',
-                'value' => self::ensure_order_status('MODULE_PAYMENT_CSOB_PROCESSING_ORDER_STATUS_ID', 'Card payment pending'),
+                'value' => self::ensure_order_status('MODULE_PAYMENT_CSOB_PROCESSING_ORDER_STATUS_ID', 'Card payment pending',1),
                 'desc' => 'Set the status of orders made with this payment module to this value',
                 'set_func' => 'tep_cfg_pull_down_order_statuses(',
                 'use_func' => 'tep_get_order_status_name',
@@ -331,7 +331,7 @@ class csob extends abstract_payment_module {
             'MODULE_PAYMENT_CSOB_PROCESSING_ORDER_STATUS_ID' => [
                 'title' => 'Wait for payment Order Status',
                 'desc' => 'Include transaction information in this order status level',
-                'value' => self::ensure_order_status('MODULE_PAYMENT_CSOB_PROCESSING_ORDER_STATUS_ID', 'Card payment pending'),
+                'value' => self::ensure_order_status('MODULE_PAYMENT_CSOB_PROCESSING_ORDER_STATUS_ID', 'Card payment pending',1),
                 'set_func' => 'tep_cfg_pull_down_order_statuses(',
                 'use_func' => 'tep_get_order_status_name',
                 'public' => true
@@ -339,7 +339,7 @@ class csob extends abstract_payment_module {
             'MODULE_PAYMENT_CSOB_DONE_ORDER_STATUS_ID' => [
                 'title' => 'All OK settled payment Order Status',
                 'desc' => 'Include transaction information in this order status level',
-                'value' => self::ensure_order_status('MODULE_PAYMENT_CSOB_DONE_ORDER_STATUS_ID', 'Settled by Card'),
+                'value' => self::ensure_order_status('MODULE_PAYMENT_CSOB_DONE_ORDER_STATUS_ID', 'Settled by Card',1),
                 'set_func' => 'tep_cfg_pull_down_order_statuses(',
                 'use_func' => 'tep_get_order_status_name',
                 'public' => true
@@ -347,7 +347,7 @@ class csob extends abstract_payment_module {
             'MODULE_PAYMENT_CSOB_CANCELED_ORDER_STATUS_ID' => [
                 'title' => 'Canceled payment Order Status',
                 'desc' => 'State for orders with cancelled paymen',
-                'value' => self::ensure_order_status('MODULE_PAYMENT_CSOB_CANCELED_ORDER_STATUS_ID', 'Payment canceled'),
+                'value' => self::ensure_order_status('MODULE_PAYMENT_CSOB_CANCELED_ORDER_STATUS_ID', 'Payment canceled',1),
                 'set_func' => 'tep_cfg_pull_down_order_statuses(',
                 'use_func' => 'tep_get_order_status_name',
                 'public' => true
@@ -355,7 +355,7 @@ class csob extends abstract_payment_module {
             'MODULE_PAYMENT_CSOB_PROCESSING_ORDER_STATUS_ID' => [
                 'title' => 'Payment in progress Order Status',
                 'desc' => 'State for orders with payment in progress',
-                'value' => self::ensure_order_status('MODULE_PAYMENT_CSOB_PROCESSING_ORDER_STATUS_ID', 'Payment processing'),
+                'value' => self::ensure_order_status('MODULE_PAYMENT_CSOB_PROCESSING_ORDER_STATUS_ID', 'Payment processing',1),
                 'set_func' => 'tep_cfg_pull_down_order_statuses(',
                 'use_func' => 'tep_get_order_status_name',
                 'public' => true
@@ -363,7 +363,7 @@ class csob extends abstract_payment_module {
             'MODULE_PAYMENT_CSOB_PROBLEM_ORDER_STATUS_ID' => [
                 'title' => 'Card payment problem Order Status',
                 'desc' => 'Include transaction information in this order status level',
-                'value' => self::ensure_order_status('MODULE_PAYMENT_CSOB_PROBLEM_ORDER_STATUS_ID', 'Card payment problem'),
+                'value' => self::ensure_order_status('MODULE_PAYMENT_CSOB_PROBLEM_ORDER_STATUS_ID', 'Card payment problem',1),
                 'set_func' => 'tep_cfg_pull_down_order_statuses(',
                 'use_func' => 'tep_get_order_status_name',
                 'public' => true

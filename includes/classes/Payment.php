@@ -95,10 +95,10 @@ class Payment extends \OndraKoupil\Csob\Payment {
 
         if (!empty($this->order->totals)) {
             if (isset($this->order->totals[0]['value'])) {
-                $this->addCartItem($this->order->totals[0]['title'], 1, $this->order->totals[0]['value']);
+                $this->addCartItem($this->order->totals[0]['title'], 1, $this->order->totals[0]['value']*100);
             }
             if (isset($this->order->totals[1]['value'])) {
-                $this->addCartItem($this->order->totals[1]['title'], 1, $this->order->totals[1]['value']);
+                $this->addCartItem($this->order->totals[1]['title'], 1, $this->order->totals[1]['value']*100);
             }
         }
     }
@@ -185,9 +185,11 @@ class Payment extends \OndraKoupil\Csob\Payment {
     }
 
     public function requestStatus() {
-        $this->status = $this->getApi()->paymentStatus($this->payId);
-        $this->foreignId = $this->payId;
-        $this->savePaymentState();
+        if($this->payId){
+            $this->status = $this->getApi()->paymentStatus($this->payId);
+            $this->foreignId = $this->payId;
+            $this->savePaymentState();
+        }
         return $this->status;
     }
 
