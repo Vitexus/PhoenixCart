@@ -1,0 +1,7 @@
+#!/bin/bash
+#. ./dbconnect.sh
+. db.conf
+
+mysql -h${H} -u${U} -p${P} $D -e "update configuration set configuration_value='$2' where configuration_key='${1}'"
+exit
+#mysql -h${H} -u${U} ${P} $D -e "SELECT configuration_key, configuration_value FROM configuration WHERE configuration_key like '%${1}%'"

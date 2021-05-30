@@ -1,0 +1,32 @@
+		.container { max-width: 1160px; }
+
+		/* you only need width to set up columns; all columns are 100%-width by default, so we start
+		   from a one-column mobile layout and gradually improve it according to available screen space */
+
+		/*mobile first=default*/
+/*				p, ul {		font-size: 0.875em;	}*/
+
+			.nav a:nth-child(1){display:inline-block;}
+			.nav a:not(:first-child){display:none;}
+		@media only screen and (min-width: 468px) {
+			.feature, .info, .c50 { width: 50%; }
+			.c33 { width: 33.33%; }
+			.c66 { width: 66.66%; }
+		}
+
+		@media only screen and (min-width: 760px) {
+			.content { width: 71.00%; }
+			.sidebar { width: 29.00%; }
+			.info    { width: 100%;   }
+      .pure-mimified-listing div {float:none  }
+			.nav a:nth-child(n+2){display:inline-block;}
+			.nav a:nth-child(1){display:none;}
+		}
+
+		@media only screen and (min-width: 980px) {
+/*			p, ul {font-size: 1.000em;}*/
+			.content { width: 74%; } /* 7/12 */
+			.sidebar { width: 26%; } /* 5/12 */
+			.info    { width: 50%;    }
+      .pure-mimified-listing div { width: 50%;float:left    }
+		}
