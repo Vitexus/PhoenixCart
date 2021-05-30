@@ -1,0 +1,3 @@
+*.php usr/share/phoenix-cart
+debian/conf/phoenix-cart.conf etc/apache2/conf-available
+
