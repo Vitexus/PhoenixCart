@@ -1,0 +1,41 @@
+#!/usr/bin/make -f
+# You must remove unused comment lines for the released package.
+export DH_VERBOSE = 1
+#export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+#export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
+#export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
+
+%:
+	dh $@
+
+#override_dh_auto_install:
+#       dh_auto_install -- prefix=/usr
+
+override_dh_install:
+	dh_install
+	mkdir -p debian/phoenix-cart-installer/usr/share/phoenix-cart/
+	cp -rfv install   debian/phoenix-cart-installer/usr/share/phoenix-cart/
+	cp -rfv admin     debian/phoenix-cart-admin/usr/share/phoenix-cart/
+	cp -rfv images    debian/phoenix-cart/usr/share/phoenix-cart/
+	cp -rfv includes  debian/phoenix-cart/usr/share/phoenix-cart/
+	cp -rfv download  debian/phoenix-cart/usr/share/phoenix-cart/
+	cp -rfv ext       debian/phoenix-cart/usr/share/phoenix-cart/
+	cp -rfv templates debian/phoenix-cart/usr/share/phoenix-cart/
+	chmod -x debian/phoenix-cart/usr/share/phoenix-cart/includes/work/.htaccess \
+debian/phoenix-cart/usr/share/phoenix-cart/includes/apps/braintree_cc/ssl/api_braintreegateway_com.ca.crt \
+debian/phoenix-cart/usr/share/phoenix-cart/includes/spiders.txt \
+debian/phoenix-cart/usr/share/phoenix-cart/includes/local/README \
+debian/phoenix-cart/usr/share/phoenix-cart/images/.htaccess \
+debian/phoenix-cart/usr/share/phoenix-cart/includes/.htaccess \
+debian/phoenix-cart/usr/share/phoenix-cart/ext/modules/payment/paypal/paypal.com.crt \
+debian/phoenix-cart/usr/share/phoenix-cart/includes/cacert.pem \
+debian/phoenix-cart-admin/usr/share/phoenix-cart/admin/images/.htaccess \
+debian/phoenix-cart-admin/usr/share/phoenix-cart/admin/includes/javascript/spiffyCal/images/spiffycal.cur \
+debian/phoenix-cart-admin/usr/share/phoenix-cart/admin/.htpasswd_phoenix \
+debian/phoenix-cart-admin/usr/share/phoenix-cart/admin/includes/local/README \
+debian/phoenix-cart-admin/usr/share/phoenix-cart/admin/includes/javascript/spiffyCal/images/spiffycal2.cur \
+debian/phoenix-cart-admin/usr/share/phoenix-cart/admin/includes/.htaccess \
+debian/phoenix-cart-admin/usr/share/phoenix-cart/admin/backups/.htaccess \
+debian/phoenix-cart-admin/usr/share/phoenix-cart/admin/includes/javascript/spiffyCal/images/spiffycal3.cur \
+debian/phoenix-cart-admin/usr/share/phoenix-cart/admin/.htaccess \
+

@@ -1,0 +1,71 @@
+Source: phoenix-cart
+Maintainer: "Vítězslav Dvořák" <info@vitexsoftware.cz>
+Section: web
+Priority: optional
+Standards-Version: 4.5.0
+Build-Depends: debhelper-compat (= 12),
+    pkg-php-tools (>= 1.7~),
+    locales-all,
+    php-mysql,
+    php-json,
+    php-mbstring,
+    php-xml,
+    php-bz2,
+    php-zip,
+    php-gd,
+    php-tcpdf,
+    po-debconf
+Homepage: https://github.com/gburton/phoenix-cart
+Vcs-Browser: https://github.com/gburton/phoenix-cart
+Vcs-Git: git@github.com:gburton/phoenix-cart.git
+Rules-Requires-Root: no
+
+Package: phoenix-cart
+Architecture: all
+Depends: php,
+    php-cli,
+    php-mysql | php-mysqli,
+    php-json,
+    php-mbstring,
+    php-xml,
+    ${misc:Depends},
+    ${sphinxdoc:Depends},
+    sensible-utils,
+    dbconfig-mysql | dbconfig-no-thanks | dbconfig-common (<< 2.0.0),
+    php-phpseclib (>= 2.0),
+    ${phpcomposer:Debian-require},
+    libjs-openlayers,
+    ucf (>= 0.28)
+Recommends: apache2 | lighttpd | httpd,
+    php-curl,
+    php-gd,
+    php-bz2,
+    php-zip,
+    php-tcpdf
+Suggests: default-mysql-server | virtual-mysql-server,
+    www-browser,
+    php-recode,
+    ${phpcomposer:Debian-suggest}
+Description:  powerful ecommerce shop
+ Phoenix is ready to use out of the box, putting  you online and in full control
+ of your business right from the start. Your customers will love the modern, 
+ responsive design that will not only make your  website look great on all 
+ mobile viewing devices but also perform at speed  whilst giving you the power 
+ to create an individual and unique look to your shop with just a few clicks!
+ Phoenix is packed with many first class utilities as standard but its modular 
+ software design lets you add many more with no programming skills required. 
+ The full suite of product, shipping and payment options included will let you 
+ sell thousands of products in any number of categories worldwide in any 
+ currency or language providing a seamless customer experience.
+ Phoenix is the official Community Version of osCommerce.
+
+Package: phoenix-cart-admin
+Architecture: all
+Depends: phoenix-cart
+Description:  powerful ecommerce shop web administration
+
+Package: phoenix-cart-installer
+Architecture: all
+Depends: phoenix-cart-admin
+Description:  powerful ecommerce shop web installer
+
