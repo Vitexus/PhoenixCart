@@ -16,3 +16,6 @@
 /vendor/
 /ext/composer/
 /nbproject/private/
+/debian/phoenix-cart/
+/debian/phoenix-cart-installer/
+/debian/phoenix-cart-admin/

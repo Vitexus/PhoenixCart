@@ -1,6 +1,6 @@
 FROM debian:latest
 
-ENV APACHE_DOCUMENT_ROOT /usr/share/ce-phoenix/
+ENV APACHE_DOCUMENT_ROOT /usr/share/phoenix-cart/
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update ; apt install -y wget libapache2-mod-php; echo "deb http://repo.vitexsoftware.cz buster main backports" | tee /etc/apt/sources.list.d/vitexsoftware.list ; wget -O /etc/apt/trusted.gpg.d/vitexsoftware.gpg http://repo.vitexsoftware.cz/keyring.gpg
@@ -18,7 +18,7 @@ RUN ls -la /var/deb ; apt update
 
 RUN aptitude -y install mariadb-server
 
-RUN aptitude -y install ce-phoenix-admin ce-phoenix-installer ; a2enconf ce-phoenix
+RUN aptitude -y install phoenix-cart-admin phoenix-cart-installer ; a2enconf phoenix-cart
 
 
 CMD /usr/sbin/cron
