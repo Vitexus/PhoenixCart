@@ -1,0 +1,191 @@
+/* user.css ----------------------------------------------------------------- */
+/*colors:
+#882115 - tmavecervena
+#fef7dd - pozadi stranky
+*/
+body{background: #fef7dd url(data:image/gif;base64,R0lGODlhAQCPAKECAIghFf733RsbGxsbGyH5BAEKAAEALAAAAAABAI8AAAIOjI+py+0Po2Sg2ouzrgUAOw==) repeat-x}
+/*shortcuts */
+.i,.i a{color:white}/*color:inverse*/
+.ml1{margin-left:1rem}
+.u{text-decoration: underline}
+/*text-align left/right*/
+.tar,.text-right{text-align:right}
+.tal{text-align:left}
+.tac{text-align:center}
+.fl{float:left !important}
+.fr{float:right !important}
+.mt{margin-top:1rem !important}
+.mt2{margin-top:2rem !important}
+.ma{margin:auto !important}
+
+/*bootstrap fix*/
+h1 small{font-size:60%}
+.banner-left{border:1px solid #882115;padding: 10px; margin-top:1rem;max-width:195px;white-space:pre}
+.banner-left a{display:inline}
+.center{text-align:center}
+.img-fluid{max-width:100%;height:auto}
+.btn-lg{margin-top:1rem;padding:5px;font-size:16px}
+/*bootstrap fix END*/
+h4{font-size:100%;padding-top:1rem}
+/*transparentni divy:*/
+select,option,.list-group-item,.bg-white,.card{background:transparent !important;border:1px solid transparent !important}
+/*nastavuje pozadi paticky*/
+.bg-dark,.bg-dark a{background:#882115;color:white}
+select {
+	overflow:hidden;
+  padding: 0px;
+  margin: -5px -50px -5px -5px;
+}
+/*buttons*/
+input, button, textarea{background:transparent;border:1px solid #882115}
+input, button{height:30px}
+button,.btn{background:#882115;color:white;font-family:sans-serif}
+button:hover{background:#aa1f45 !important}
+* {border-radius:0 !important}
+a {color:#555}
+ 
+/*pageTPL*/
+.hdr input{width:80%}
+.bm-categories{font-size:120%}
+/*pageTPL END*/
+
+/*index.php*/
+/*.pure-mimified-listing img{max-width:146px;height:auto;float:left;margin-right:1rem;padding-bottom:100%}*/
+.pure-mimified-listing div{margin-bottom:2.3em;}
+h5 {font-size:1.2em;font-weight:normal;}
+
+.pure-mimified-listing p b,.radio  b{font-size:130%;color:#882115}
+.pure-mimified-listing a:hover{text-decoration:none}
+.pure-mimified-listing a {background-repeat:no-repeat}
+/*index.php END*/
+
+/*product_info */
+.btn-product-info{margin-left:1em}
+.pi-img img{max-height:360px;width:auto;max-width:240px}
+.pi-options-attributes{padding-left:0.8rem !important;min-height:314px}
+.col-form-label{clear:both !important width:100% !important;}
+
+.cm-pi-name small{font-size:100% !important;padding-top: 0em !important}
+
+
+.lb img{max-height:400px;width:auto}
+.nav a{margin-right:2vw}
+.HpArticleFloatLeft {float:right !important;border:2px solid red !important}
+
+
+/*basic Template*/
+/*TODO:smazat wrapper?*/
+#bodyWrapper{min-height:70vh}
+dropdown-menu,.dropdown-menu a{background:#882115 !important}
+.nav1 a{font-size:110%; margin-right:1rem}
+/*col.leftCategories*/
+/*basic Template END*/
+
+.card img{width:auto;height:200px !important;margin-left:20px}
+
+/* @media default = XS START */
+/*header div*/
+.nav  a {padding:.3rem 0;font-size:120%;}
+.hdr div:nth-child(1){margin-top:20px}
+.hdr div:nth-child(2){margin-top:38px}
+.l a{
+	display:block;
+	width:288px;
+	height:61px;
+	background: url('/i/l1.gif');
+}
+/*.pure-mimified-listing  div:nth-child() background-position:0 0px;
+.pure-mimified-listing  div:nth-child(3) background-position:0 -230px;
+.pure-mimified-listing  div:nth-child() background-position:0 -460px;
+.pure-mimified-listing  div:nth-child() background-position:0 -690px;*/
+/* @media default END */
+
+
+
+/*radio*************************************************/
+/* The container */
+.radio {
+  display: block;
+  position: relative;
+  padding-left: 10px;
+  cursor: pointer;
+/*  font-size: 22px;*/
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.radio label{margin-bottom:7px;display:block}
+
+/* Hide the browser's default radio button */
+.radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.radio i {
+  position: relative;
+  top: 4px;
+  left: -8px;
+  height: 16px;
+  width: 16px;
+  background-color: #ccc;
+  border-radius: 0%;
+  display:block;
+  float:left;
+}
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radio i:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio input:checked ~ i:after {
+  display: block;
+}
+/* Style the indicator (dot/circle) */
+.radio i:after {
+  top: 4px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 0%;
+  background: #882115;
+}
+/*radio END*/
+
+/*pagination*/
+.pagination {
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+}
+
+.page-link {
+
+    position: relative;
+    display: block;
+    border: 1px solid gray;
+/*		width:30px;*/
+		height:40px;
+		text-align:center;
+		font-size:200;
+		padding:8px 20px;
+		text-align:center;
+}
+
+.page-link{background:transparent;font-weight:bold}
+.active a {background:#882115;color:white}
+
+/*pagination END*/
+
+/*bootstrap fuckup form*/
+.BtnCart button,.BtnCart input{ margin-right:10px;padding:2px 10px}
+.BtnCart input, .BtnCart div{float:left;height:30px}
+.list-group-item{display:block}
+/*bootstrap fuckup form END*/

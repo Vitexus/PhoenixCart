@@ -1,0 +1,13 @@
+# WARNING thi user need to bee created maually first and need GRANT OPTION:
+# grant ALL on myDBname.* to rootadmin@localhost identified by 'heslo' WITH GRANT OPTION;
+U=rootadmin
+H=localhost
+P='heslo'
+D='ph4'
+
+HH='localhost'
+RU='ph4_root'
+RP='rootpass'
+
+A='ph4_anon'
+PA='anonympass'

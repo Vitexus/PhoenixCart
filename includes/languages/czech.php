@@ -396,3 +396,5 @@ const QUICK_SHOP_PAGE = 'quick-shop';
 
 const PASSWORD = 'Heslo';
 const LOGIN = 'Přihlášení';
+
+const TEXT_UNKNOWN_TAX_RATE ='EROR: TEXT_UNKNOWN_TAX_RATE';
