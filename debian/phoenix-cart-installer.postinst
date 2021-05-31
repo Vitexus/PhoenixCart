@@ -1,0 +1,11 @@
+#!/bin/sh
+# postinst script for phoenix-cart-installer
+
+set -e
+
+chmod 777 /usr/share/phoenix-cart/includes/configure.php
+chmod 777 /usr/share/phoenix-cart/admin/includes/configure.php 
+
+#DEBHELPER#
+
+exit 0

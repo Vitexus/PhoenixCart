@@ -40,7 +40,7 @@
     public static function guarantee_cart() {
 // if there is nothing in the customer's cart, redirect to the shopping cart page
       if ($_SESSION['cart']->count_contents() <= 0) {
-        Href::redirect($GLOBALS['Linker']->build('shopping_cart.php'));
+        Href::redirect(Guarantor::ensure_global('Linker')->build('shopping_cart.php'));
       }
     }
 
@@ -74,7 +74,7 @@
       if (!isset($_SESSION['shipping'], $_SESSION['sendto'], $_SESSION['cart']->cartID, $_SESSION['cartID'])
         || ($_SESSION['cart']->cartID !== $_SESSION['cartID']))
       {
-        Href::redirect($GLOBALS['Linker']->build('checkout_shipping.php'));
+        Href::redirect(Guarantor::ensure_global('Linker')->build('checkout_shipping.php'));
       }
     }
 
@@ -100,7 +100,7 @@
 
     public static function validate_payment() {
       if ( (!Text::is_empty(MODULE_PAYMENT_INSTALLED)) && (!isset($_SESSION['payment'])) ) {
-        Href::redirect($GLOBALS['Linker']->build('checkout_payment.php'));
+        Href::redirect(Guarantor::ensure_global('Linker')->build('checkout_payment.php'));
       }
     }
 
@@ -153,7 +153,7 @@
         || ( is_array($payment_modules->modules) && (count($payment_modules->modules) > 1) && !is_object($payment_module) )
         || (is_object($payment_module) && (!$payment_module->enabled)) )
       {
-        Href::redirect($GLOBALS['Linker']->build('checkout_payment.php', ['error_message' => ERROR_NO_PAYMENT_MODULE_SELECTED]));
+        Href::redirect(Guarantor::ensure_global('Linker')->build('checkout_payment.php', ['error_message' => ERROR_NO_PAYMENT_MODULE_SELECTED]));
       }
     }
 
@@ -193,7 +193,7 @@
     }
 
     public static function redirect_success() {
-      Href::redirect($GLOBALS['Linker']->build('checkout_success.php'));
+      Href::redirect(Guarantor::ensure_global('Linker')->build('checkout_success.php'));
     }
 
   }

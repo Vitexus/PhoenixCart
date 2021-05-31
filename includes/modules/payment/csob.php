@@ -188,11 +188,22 @@ class csob extends abstract_payment_module {
         return true;
     }
 
+    /**
+     * 
+     * @return boolean
+     */
     public function after_process() {
+        //TOdo IS Payment expired ?
         $this->prepare_payment();
         return $this->success;
     }
 
+    /**
+     * 
+     * @global order $order
+     * 
+     * @return sting
+     */
     public function get_error() {
         global $order;
         $message = MODULE_PAYMENT_CSOB_ERROR_GENERAL;
@@ -220,6 +231,13 @@ class csob extends abstract_payment_module {
         return $error;
     }
 
+    /**
+     * Order keeper
+     * 
+     * @param int $orderId
+     * 
+     * @return PureOSC\Order
+     */
     public function getOrder($orderId = null) {
         if (is_null($this->order)) {
             $this->order = Guarantor::ensure_global('PureOSC\Order', array_key_exists('order_id', $GLOBALS) ? $GLOBALS['order_id'] : $orderId);
@@ -245,6 +263,10 @@ class csob extends abstract_payment_module {
         return $status;
     }
 
+    /**
+     * 
+     * @param type $forceStatus
+     */
     public function setOrderStatusByPaymentState($forceStatus = null) {
         if (array_key_exists('order_id', $GLOBALS)) {
           
