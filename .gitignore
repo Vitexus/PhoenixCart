@@ -19,3 +19,6 @@
 /debian/phoenix-cart/
 /debian/phoenix-cart-installer/
 /debian/phoenix-cart-admin/
+
+admin/includes/configure.php
+includes/configure.php
