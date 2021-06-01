@@ -1,3 +1,5 @@
-*.php usr/share/phoenix-cart
-debian/conf/phoenix-cart.conf etc/apache2/conf-available
-
+*.php 				usr/share/phoenix-cart
+debian/conf/phoenix-cart.conf	etc/apache2/conf-available
+install/*.sql			usr/share/phoenix-cart/install
+db/migrations/*.php		usr/lib/phoenix-cart/db/migrations/
+db/seeds/*.php			usr/lib/phoenix-cart/db/seeds/

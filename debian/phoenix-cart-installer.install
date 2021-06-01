@@ -1,0 +1,8 @@
+install/*.php  				usr/share/phoenix-cart/install/
+install/images/*			usr/share/phoenix-cart/install/images/
+install/includes/*.php			usr/share/phoenix-cart/install/includes/
+install/includes/functions/*.php	usr/share/phoenix-cart/install/includes/functions/
+install/templates/*.php			usr/share/phoenix-cart/install/templates/
+install/templates/main_page/*		usr/share/phoenix-cart/install/templates/main_page/
+install/templates/pages/*.php		usr/share/phoenix-cart/install/templates/pages/
+

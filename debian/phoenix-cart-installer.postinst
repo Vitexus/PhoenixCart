@@ -6,6 +6,14 @@ set -e
 chmod 777 /usr/share/phoenix-cart/includes/configure.php
 chmod 777 /usr/share/phoenix-cart/admin/includes/configure.php 
 
+    instdir=`pwd`
+    cd /usr/lib/phoenix-cart/
+    phinx seed:run Phoenix -c /usr/share/phoenix-cart/phinx-adapter.php
+    phinx seed:run Demodata -c /usr/share/phoenix-cart/phinx-adapter.php
+    cd $instdir
+
+
+
 #DEBHELPER#
 
 exit 0

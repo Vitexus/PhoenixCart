@@ -1,4 +1,5 @@
 phoenix-cart-admin_1.0.8.3_all.deb web optional
+phoenix-cart-csob_1.0.8.3_all.deb web optional
 phoenix-cart-installer_1.0.8.3_all.deb web optional
 phoenix-cart_1.0.8.3_all.deb web optional
 phoenix-cart_1.0.8.3_amd64.buildinfo web optional

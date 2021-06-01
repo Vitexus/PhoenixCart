@@ -2,7 +2,7 @@ Source: phoenix-cart
 Maintainer: "Vítězslav Dvořák" <info@vitexsoftware.cz>
 Section: web
 Priority: optional
-Standards-Version: 4.5.0
+Standards-Version: 4.3.0
 Build-Depends: debhelper-compat (= 12),
     pkg-php-tools (>= 1.7~),
     locales-all,
@@ -15,8 +15,8 @@ Build-Depends: debhelper-compat (= 12),
     php-gd,
     php-tcpdf,
     po-debconf
-Homepage: https://github.com/gburton/phoenix-cart
-Vcs-Browser: https://github.com/gburton/phoenix-cart
+Homepage: https://github.com/PureHTML/PhoenixCart/
+Vcs-Browser: https://github.com/PureHTML/PhoenixCart/
 Vcs-Git: git@github.com:gburton/phoenix-cart.git
 Rules-Requires-Root: no
 
@@ -35,6 +35,8 @@ Depends: php,
     php-phpseclib (>= 2.0),
     ${phpcomposer:Debian-require},
     libjs-openlayers,
+    php-robmorgan-phinx,
+    php-vitexsoftware-ease-fluentpdo,
     ucf (>= 0.28)
 Recommends: apache2 | lighttpd | httpd,
     php-curl,
@@ -68,4 +70,10 @@ Package: phoenix-cart-installer
 Architecture: all
 Depends: phoenix-cart-admin
 Description:  powerful ecommerce shop web installer
+
+Package: phoenix-cart-csob
+Architecture: all
+Depends: phoenix-cart, php-ondrakoupil-csob
+Description:  CSOB PayGW support
+
 

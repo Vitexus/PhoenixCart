@@ -57,6 +57,15 @@ dbc_generate_include=php:/etc/phoenix-cart/config-db.php
 
 dbc_go phoenix-cart $@
 
+db_get composer/WEB_USER
+WEBUSER=$RET
+mkdir -p /var/lib/phoenix-cart /var/lib/composer
+chown $WEBUSER /var/lib/phoenix-cart /var/lib/composer -R
+echo '{}' > /usr/lib/phoenix-cart/composer.lock
+chown $WEBUSER /usr/lib/phoenix-cart/composer.lock
+su - $WEBUSER -s /bin/bash -c 'COMPOSER_HOME="/var/lib/composer" composer -o install -d /usr/lib/phoenix-cart/'
+
+
 if [ "$1" = "configure" ]; then
 
 	db_version 2.0

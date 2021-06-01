@@ -21,6 +21,7 @@ override_dh_install:
 	cp -rfv download  debian/phoenix-cart/usr/share/phoenix-cart/
 	cp -rfv ext       debian/phoenix-cart/usr/share/phoenix-cart/
 	cp -rfv templates debian/phoenix-cart/usr/share/phoenix-cart/
+	rm debian/phoenix-cart-installer/usr/share/phoenix-cart/install/*.sql
 	chmod -x debian/phoenix-cart/usr/share/phoenix-cart/includes/work/.htaccess \
 debian/phoenix-cart/usr/share/phoenix-cart/includes/apps/braintree_cc/ssl/api_braintreegateway_com.ca.crt \
 debian/phoenix-cart/usr/share/phoenix-cart/includes/spiders.txt \
@@ -37,5 +38,9 @@ debian/phoenix-cart-admin/usr/share/phoenix-cart/admin/includes/javascript/spiff
 debian/phoenix-cart-admin/usr/share/phoenix-cart/admin/includes/.htaccess \
 debian/phoenix-cart-admin/usr/share/phoenix-cart/admin/backups/.htaccess \
 debian/phoenix-cart-admin/usr/share/phoenix-cart/admin/includes/javascript/spiffyCal/images/spiffycal3.cur \
-debian/phoenix-cart-admin/usr/share/phoenix-cart/admin/.htaccess \
+debian/phoenix-cart-admin/usr/share/phoenix-cart/admin/.htaccess 
+	sed -i -e 's/\.\/vendor\/autoload.php/\/usr\/lib\/phoenix-cart\/autoload.php/g'  debian/phoenix-cart/usr/share/phoenix-cart/phinx-adapter.php
+	mv debian/phoenix-cart/usr/share/phoenix-cart/includes/modules/payment/csob.php debian/phoenix-cart-csob/usr/share/phoenix-cart/includes/modules/payment/csob.php
+	mv debian/phoenix-cart/usr/share/phoenix-cart/includes/apps/csob/ debian/phoenix-cart-csob/usr/share/phoenix-cart/includes/apps/
+	mv debian/phoenix-cart/usr/share/phoenix-cart/ext/modules/payment/csob/welcomeback.php debian/phoenix-cart-csob/usr/share/phoenix-cart/ext/modules/payment/csob/welcomeback.php
 
