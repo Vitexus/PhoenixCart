@@ -2,7 +2,7 @@
 
 use Phinx\Seed\AbstractSeed;
 
-class Demodata extends AbstractSeed
+class ResetAdmin extends AbstractSeed
 {
 
     /**
@@ -15,6 +15,9 @@ class Demodata extends AbstractSeed
      */
     public function run()
     {
-        $this->execute(file_get_contents(str_replace(".php",".sql", __FILE__)));
+        $admins = $this->table('administrators');
+        $admins->truncate();
+        $ar = $this->table('action_recorder');
+        $ar->truncate();
     }
 }

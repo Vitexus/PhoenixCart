@@ -11,7 +11,11 @@ autoload:
 	composer update
 
 demodata:
-	cd src ; ../vendor/bin/phinx seed:run -c ../phinx-adapter.php ; cd ..
+	./vendor/bin/phinx seed:run -s Phoenix -s Demodata -s Cz -c ./phinx-adapter.php
+	./vendor/bin/phinx migrate -c ./phinx-adapter.php
+
+adminreset:
+	./vendor/bin/phinx seed:run -s ResetAdmin -c ./phinx-adapter.php
 
 newmigration:
 	read -p "Enter CamelCase migration name : " migname ; ./vendor/bin/phinx create $$migname -c ./phinx-adapter.php
@@ -54,8 +58,13 @@ drun:
 	docker run  -dit --name ce-phoenix -p 8080:80 purehtml/ce-phoenix
 	firefox http://localhost:8080/ce-phoenix?login=demo\&password=demo
 
-vagrant:
+
+vagrant: deb
 	vagrant destroy -f
+	mkdir -p deb
+	debuild -us -uc
+	mv ../phoenix-cart*$(currentversion)_all.deb deb
+	cd deb ; dpkg-scanpackages . /dev/null | gzip -9c > Packages.gz; cd ..
 	vagrant up
 	firefox http://localhost:8080/ce-phoenix?login=demo\&password=demo
 
