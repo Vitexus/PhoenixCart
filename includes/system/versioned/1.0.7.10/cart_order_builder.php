@@ -148,7 +148,7 @@ EOSQL;
     public function build_products() {
       $tax_address = $this->build_tax_address();
 
-      if(array_key_exists('cart', $_SESSION) && is_object($_SESSION['cart']) === false){
+      if(!array_key_exists('cart', $_SESSION) || is_object($_SESSION['cart']) === false){
           $_SESSION['cart'] = new shoppingCart();
       }
       

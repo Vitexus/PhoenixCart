@@ -3,6 +3,7 @@
 class Balikovna extends abstract_shipping_module {
 
     public function __construct() {
+        parent::__construct();
         $this->balikovna();
     }
 
@@ -342,119 +343,119 @@ console.log("updateConnectedField("+opts+","+id+")");
           }
         </script></div>';
 
-            return $js;
-        }
+        return $js;
+    }
 
 //---------------------------------------------------------------------------------------------
 
-        function formAction() {
-            global $_POST, $order;
+    function formAction() {
+        global $_POST, $order;
 
-            if (!isset($_SESSION['bal_data']))
-                $_SESSION['bal_data'] = [];
+        if (!isset($_SESSION['bal_data']))
+            $_SESSION['bal_data'] = [];
 
-            $redir_back = false;
-            $skip = false;
+        $redir_back = false;
+        $skip = false;
 
-            if (isset($_POST['select_city_bal']))
-                if ($_POST['select_city_bal'] != '') {
+        if (isset($_POST['select_city_bal']))
+            if ($_POST['select_city_bal'] != '') {
 
-                    if (isset($_SESSION['bal_data']['street']))
-                        if ($_POST['select_city_bal'] != $_SESSION['bal_data']['city']) { //pri zmene mesta vsechno vymazat a znovu!
-                            unset($_SESSION['bal_data']['street']);
-                            unset($_SESSION['bal_data']['final']);
-                            unset($_SESSION['bal_data']['comment']);
-                            unset($_SESSION['bal_data']['completed']);
-                            $skip = true;
-                        }
-
-                    $_SESSION['bal_data']['city'] = $_POST['select_city_bal'];
-
-                    if (!isset($_SESSION['bal_data']['completed']))
-                        $redir_back = true; //tep_redirect('checkout_shipping.php'); //$redir_back = true;
-                }
-
-            if (isset($_POST['select_street_bal']))
-                if ($_POST['select_street_bal'] != '')
-                    if (!$skip) {
-
-                        //finalni detaily pobocky:
-                        $finQ = tep_db_query("SELECT * FROM balikovna WHERE id=" . $_POST['select_street_bal']);
-                        $finA = tep_db_fetch_array($finQ);
-
-                        $_SESSION['bal_data']['street'] = $finA['id'];
-                        $_SESSION['bal_data']['final'] = "Vaše zásilka bude k vyzvednutí na pobočce " . $finA['name'] . " (" . $finA['street'] . ").<br />\n
-  Nyní můžete pokračovat v nákupu.";
-                        $_SESSION['bal_data']['comment'] = "  Doprava Balíkovnou na jméno-pobočku: \n" . $order->customer['name'] . "\nBALÍKOVNA\n" . $finA['zip'] . " " . $finA['name'];
-
-                        if (!isset($_SESSION['bal_data']['completed']))
-                            $redir_back = true;
-
-                        $_SESSION['bal_data']['completed'] = true; //timto pruchodem povolit pokračovani
-
-                        $_SESSION['bal_comment'] = $_SESSION['bal_data']['comment']; //pro finalni vlozeni na konci nakupu
+                if (isset($_SESSION['bal_data']['street']))
+                    if ($_POST['select_city_bal'] != $_SESSION['bal_data']['city']) { //pri zmene mesta vsechno vymazat a znovu!
+                        unset($_SESSION['bal_data']['street']);
+                        unset($_SESSION['bal_data']['final']);
+                        unset($_SESSION['bal_data']['comment']);
+                        unset($_SESSION['bal_data']['completed']);
+                        $skip = true;
                     }
 
-            if ($redir_back) {
-                $_SESSION['shipping']['id'] = $_POST['shipping'];
-                tep_redirect('checkout_shipping.php');
+                $_SESSION['bal_data']['city'] = $_POST['select_city_bal'];
+
+                if (!isset($_SESSION['bal_data']['completed']))
+                    $redir_back = true; //tep_redirect('checkout_shipping.php'); //$redir_back = true;
             }
+
+        if (isset($_POST['select_street_bal']))
+            if ($_POST['select_street_bal'] != '')
+                if (!$skip) {
+
+                    //finalni detaily pobocky:
+                    $finQ = tep_db_query("SELECT * FROM balikovna WHERE id=" . $_POST['select_street_bal']);
+                    $finA = tep_db_fetch_array($finQ);
+
+                    $_SESSION['bal_data']['street'] = $finA['id'];
+                    $_SESSION['bal_data']['final'] = "Vaše zásilka bude k vyzvednutí na pobočce " . $finA['name'] . " (" . $finA['street'] . ").<br />\n
+  Nyní můžete pokračovat v nákupu.";
+                    $_SESSION['bal_data']['comment'] = "  Doprava Balíkovnou na jméno-pobočku: \n" . $order->customer['name'] . "\nBALÍKOVNA\n" . $finA['zip'] . " " . $finA['name'];
+
+                    if (!isset($_SESSION['bal_data']['completed']))
+                        $redir_back = true;
+
+                    $_SESSION['bal_data']['completed'] = true; //timto pruchodem povolit pokračovani
+
+                    $_SESSION['bal_comment'] = $_SESSION['bal_data']['comment']; //pro finalni vlozeni na konci nakupu
+                }
+
+        if ($redir_back) {
+            $_SESSION['shipping']['id'] = $_POST['shipping'];
+            tep_redirect('checkout_shipping.php');
         }
+    }
 
 //---------------------------------------------------------------------------------------------
 
-        function drawForm() {
+    function drawForm() {
 //global $order;
 //echo "<xmp>".var_export($order, true)."</xmp>";
 
-            echo '<tr><td colspan=4><div id="zasdiv" class="alert alert-warning" style=" 
+        echo '<tr><td colspan=4><div id="zasdiv" class="alert alert-warning" style=" 
 display:' . (true || (count($_SESSION['bal_data']) > 0) ? 'inline-block' : 'none;') .
-            'height:200px; width: 100%; overflow: auto; padding: 10px;">&nbsp;';
+        'height:200px; width: 100%; overflow: auto; padding: 10px;">&nbsp;';
 
-            $selCity = isset($_SESSION['bal_data']['city']) ? $_SESSION['bal_data']['city'] : false;
-            $selStreet = isset($_SESSION['bal_data']['street']) ? $_SESSION['bal_data']['street'] : false;
+        $selCity = isset($_SESSION['bal_data']['city']) ? $_SESSION['bal_data']['city'] : false;
+        $selStreet = isset($_SESSION['bal_data']['street']) ? $_SESSION['bal_data']['street'] : false;
 
-            $cityListQ = tep_db_query("SELECT DISTINCT city FROM balikovna WHERE country = 'cz' AND statusid = 1 ORDER BY city");
+        $cityListQ = tep_db_query("SELECT DISTINCT city FROM balikovna WHERE country = 'cz' AND statusid = 1 ORDER BY city");
 
-            $cityA = [['id' => '', 'text' => '-VYBERTE MĚSTO-']];
-            while ($cityListA = tep_db_fetch_array($cityListQ)) {
+        $cityA = [['id' => '', 'text' => '-VYBERTE MĚSTO-']];
+        while ($cityListA = tep_db_fetch_array($cityListQ)) {
 
-                $cityA[] = ['id' => $cityListA['city'], 'text' => $cityListA['city']];
-            }
-
-            echo tep_draw_pull_down_menu('select_city_bal', $cityA, $selCity, "onChange=\"document.forms['checkout_address'].submit()\"") . "\n";
-
-            if ($selCity) {
-
-                $streetListQ = tep_db_query($qStr = "SELECT id, street FROM balikovna WHERE city = '" . $selCity . "' AND statusid = 1 ORDER BY street");
-
-                $streetA = [['id' => '', 'text' => '-----VYBERTE ULICI------']];
-                while ($streetListA = tep_db_fetch_array($streetListQ)) {
-
-                    $streetA[] = ['id' => $streetListA['id'], 'text' => $streetListA['street']];
-                }
-                echo '<br />';
-                //echo $qStr . "<br />\n" . var_export($streetA, true) . "<br />\n";
-                echo tep_draw_pull_down_menu('select_street_bal', $streetA, $selStreet, "onChange=\"document.forms['checkout_address'].submit()\"") . "\n";
-            }
-
-            if (isset($_SESSION['bal_data']['final'])) {
-
-                echo "<br />\n" . $_SESSION['bal_data']['final'];
-
-                //$comments = $_SESSION['bal_data']['comment'];
-            }
-            ?>
-            </div></td></tr>
-            <?php
+            $cityA[] = ['id' => $cityListA['city'], 'text' => $cityListA['city']];
         }
 
-//---------------------------------------------------------------------------------------------
+        echo tep_draw_pull_down_menu('select_city_bal', $cityA, $selCity, "onChange=\"document.forms['checkout_address'].submit()\"") . "\n";
 
-        function test() {
-            echo "<h1>TEST</h1>";
+        if ($selCity) {
+
+            $streetListQ = tep_db_query($qStr = "SELECT id, street FROM balikovna WHERE city = '" . $selCity . "' AND statusid = 1 ORDER BY street");
+
+            $streetA = [['id' => '', 'text' => '-----VYBERTE ULICI------']];
+            while ($streetListA = tep_db_fetch_array($streetListQ)) {
+
+                $streetA[] = ['id' => $streetListA['id'], 'text' => $streetListA['street']];
+            }
+            echo '<br />';
+            //echo $qStr . "<br />\n" . var_export($streetA, true) . "<br />\n";
+            echo tep_draw_pull_down_menu('select_street_bal', $streetA, $selStreet, "onChange=\"document.forms['checkout_address'].submit()\"") . "\n";
         }
 
-//---------------------------------------------------------------------------------------------
+        if (isset($_SESSION['bal_data']['final'])) {
+
+            echo "<br />\n" . $_SESSION['bal_data']['final'];
+
+            //$comments = $_SESSION['bal_data']['comment'];
+        }
+        ?>
+        </div></td></tr>
+        <?php
     }
-    ?>
+
+//---------------------------------------------------------------------------------------------
+
+    function test() {
+        echo "<h1>TEST</h1>";
+    }
+
+//---------------------------------------------------------------------------------------------
+}
+?>

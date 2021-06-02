@@ -13,7 +13,7 @@
   class order_status {
 
     public static function fetch_name($orders_status_id, $language_id = '') {
-      if ($order_status_id < 1) {
+      if ($orders_status_id < 1) {
         return TEXT_DEFAULT;
       }
 

@@ -47,6 +47,7 @@ $str = str_replace(", ", ",", $str);
 $str = str_replace("; ", ";", $str);
 $str = str_replace(": ", ":", $str);
     $this->sitestart .= $str;
+    
     $this->sitestart .= '.pure-mimified-listing div{height:' . BGIMG_HEIGHT . 'px}' . PHP_EOL;
     $this->sitestart .= '.pure-mimified-listing div h5,.pure-mimified-listing div p{margin:0 15px 5px ' . (BGIMG_WIDTH + 16) . 'px;line-height:1.2}' . PHP_EOL;
     $this->sitestart .= '.ImSmW img{max-width:' . BGIMG_WIDTH . 'px !important;}';
