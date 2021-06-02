@@ -1,3 +1,4 @@
+Makefile  				usr/share/phoenix-cart/
 install/*.php  				usr/share/phoenix-cart/install/
 install/images/*			usr/share/phoenix-cart/install/images/
 install/includes/*.php			usr/share/phoenix-cart/install/includes/
