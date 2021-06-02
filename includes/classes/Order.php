@@ -69,7 +69,7 @@ class Order extends \order {
                 tep_redirect(tep_href_link('checkout_success.php', '', 'SSL'));
                 break;
             case intval(MODULE_PAYMENT_CSOB_PROBLEM_ORDER_STATUS_ID):
-                tep_redirect(tep_href_link('checkout_payment.php', 'payment_error=' . 'csob' . '&error=' . $resultCode));
+                tep_redirect(tep_href_link('checkout_payment.php', 'payment_error=' . 'csob' . '&error=' . \Ease\WebPage::getRequestValue('resultCode')));
                 break;
         }
     }
