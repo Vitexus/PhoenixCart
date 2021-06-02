@@ -1,16 +1,16 @@
-/debian/ce-phoenix-installer.debhelper.log
-/debian/ce-phoenix-installer.substvars
-/debian/ce-phoenix.debhelper.log
+/debian/phoenix-cart-installer.debhelper.log
+/debian/phoenix-cart-installer.substvars
+/debian/phoenix-cart.debhelper.log
 /debian/debhelper-build-stamp
-/debian/ce-phoenix.postrm.debhelper
-/debian/ce-phoenix.substvars
+/debian/phoenix-cart.postrm.debhelper
+/debian/phoenix-cart.substvars
 /debian/.debhelper/
-/debian/ce-phoenix/
-/debian/ce-phoenix-installer/
+/debian/phoenix-cart/
+/debian/phoenix-cart-installer/
 /.github/
-/debian/ce-phoenix-admin.debhelper.log
-/debian/ce-phoenix-admin.substvars
-/debian/ce-phoenix-admin/
+/debian/phoenix-cart-admin.debhelper.log
+/debian/phoenix-cart-admin.substvars
+/debian/phoenix-cart-admin/
 /deb/
 
 /vendor/
@@ -19,3 +19,8 @@
 /debian/phoenix-cart/
 /debian/phoenix-cart-installer/
 /debian/phoenix-cart-admin/
+/debian/phoenix-cart-csob.debhelper.log
+/debian/phoenix-cart-csob.substvars
+/debian/phoenix-cart-csob/
+/.vagrant/
+/.vscode/

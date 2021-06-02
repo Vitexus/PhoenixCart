@@ -63,8 +63,8 @@ class Order extends \order {
                 tep_redirect(tep_href_link('shopping_cart.php', '', 'SSL'));
                 break;
             case intval(MODULE_PAYMENT_CSOB_PROCESSING_ORDER_STATUS_ID):
-                tep_redirect(tep_href_link('account_history.php', '', 'SSL'));
-                break;
+//                tep_redirect(tep_href_link('account_history.php', '', 'SSL'));
+//                break;
             case intval(MODULE_PAYMENT_CSOB_DONE_ORDER_STATUS_ID):
                 tep_redirect(tep_href_link('checkout_success.php', '', 'SSL'));
                 break;

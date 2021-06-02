@@ -76,4 +76,27 @@ Architecture: all
 Depends: phoenix-cart, php-ondrakoupil-csob
 Description:  CSOB PayGW support
 
+Package: phoenix-cart-gpwebpay
+Architecture: all
+Depends: phoenix-cart, php-ondrakoupil-csob
+Description: GP WebPaysupport
+
+Package: phoenix-cart-abraflexi
+Architecture: all
+Depends: phoenix-cart, php-spojenet-abraflexi
+Description: AbraFlexi integration
+
+
+Package: phoenix-cart-balikovna
+Architecture: all
+Depends: phoenix-cart
+Description: Shipping via Czech POST
+
+
+Package: phoenix-cart-zasilkovna
+Architecture: all
+Depends: phoenix-cart
+Description: Czech shipping service Zasilkovna integration
+
+
 

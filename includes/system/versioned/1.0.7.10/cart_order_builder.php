@@ -51,6 +51,13 @@ EOSQL;
     }
 
     public function build_info() {
+        
+        
+     if ((array_key_exists('currencies', $GLOBALS) === false) || (array_key_exists('currency', $_SESSION) === false  )){
+        $GLOBALS['currencies'] = Guarantor::ensure_global('currencies', DEFAULT_CURRENCY);
+        $_SESSION['currency'] = DEFAULT_CURRENCY;
+     }
+     
       $this->order->info = [
         'order_status' => DEFAULT_ORDERS_STATUS_ID,
         'currency' => $_SESSION['currency'],
@@ -141,7 +148,7 @@ EOSQL;
     public function build_products() {
       $tax_address = $this->build_tax_address();
 
-      if(is_object($_SESSION['cart']) === false){
+      if(array_key_exists('cart', $_SESSION) && is_object($_SESSION['cart']) === false){
           $_SESSION['cart'] = new shoppingCart();
       }
       
