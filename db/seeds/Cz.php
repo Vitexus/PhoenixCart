@@ -36,6 +36,9 @@ class Cz extends AbstractSeed {
         $this->execute("UPDATE configuration SET configuration_value = 'cs' WHERE configuration_key = 'DEFAULT_LANGUAGE'");
         $this->execute('INSERT INTO advert_info (advert_id, languages_id) SELECT advert_id, 2 FROM advert_info WHERE languages_id = 1 ');
         $this->execute('INSERT INTO pages_description (pages_id, languages_id, pages_title, pages_text, navbar_title) SELECT pages_id, 2, 2, 2, 2 FROM pages_description WHERE languages_id = 1 ');
+        
+        $this->execute("INSERT INTO currencies (title, code, symbol_left, symbol_right, decimal_point, thousands_point, decimal_places, value) VALUES ('Czech Koruna', 'CZK', '', 'Kč', ',', '.', '2', '1') ");
+        $this->execute("update configuration set configuration_value = 'CZK' where configuration_key = 'DEFAULT_CURRENCY' ");
     }
 
 }
