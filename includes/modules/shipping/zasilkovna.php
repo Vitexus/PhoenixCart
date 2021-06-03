@@ -30,7 +30,7 @@ class Zasilkovna extends abstract_shipping_module {
         $this->sort_order = \Ease\Functions::cfg('MODULE_SHIPPING_ZAS_SORT_ORDER');
         $this->api_key = \Ease\Functions::cfg('MODULE_SHIPPING_ZAS_API_KEY');
         $this->country = \Ease\Functions::cfg('MODULE_SHIPPING_ZAS_COUNTRY') == 'Vše' ? '' : ( \Ease\Functions::cfg('MODULE_SHIPPING_ZAS_COUNTRY') == 'Slovenská republika' ? 'sk' : 'cz' );
-        $this->icon = 'images/apps/zasilkovna/Zasilkovna_logo_inverzni_WEB.png';
+        $this->icon = 'images/apps/zasilkovna/zasilkovna.png';
         $this->tax_class = \Ease\Functions::cfg('MODULE_SHIPPING_ZAS_TAX_CLASS');
 //DELETED      $this->tax_basis = MODULE_SHIPPING_ZAS_TAX_BASIS == 'Doprava' ? 'Shipping' : (MODULE_SHIPPING_ZAS_TAX_BASIS == 'Fakturace' ? 'Billing' : 'Store');
 
@@ -140,8 +140,84 @@ class Zasilkovna extends abstract_shipping_module {
       }
 
      */
-    protected function get_parameters() {
-        
+
+    /**
+     * Module Configuration
+     * 
+     * @return array Module initial configuration
+     */
+    function get_parameters() {
+        return [
+            $this->config_key_base . 'STATUS' => [
+                'title' => 'Povolit Zásilkovnu',
+                'value' => 'True',
+                'desc' => 'Chcete povolit používání Zásilkovny?',
+                'set_func' => "tep_cfg_select_option(['True', 'False'], ",
+            ],
+            $this->config_key_base . 'COST' => [
+                'title' => 'Zásilkovna',
+                'value' => '5.00', //TODO: Obtain using API
+                'desc' => 'Shiping price', //TODO: Localize
+            ],
+            $this->config_key_base . 'MODE' => [
+                'title' => 'Table Method',
+                'value' => 'weight',
+                'desc' => 'The shipping cost is based on the order total or the total weight of the items ordered.',
+                'set_func' => "tep_cfg_select_option(['weight', 'price', 'quantity'], ",
+            ],
+            $this->config_key_base . 'HANDLING' => [
+                'title' => 'Handling Fee',
+                'value' => '0',
+                'desc' => 'Handling fee for this shipping method.',
+            ],
+            $this->config_key_base . 'TAX_CLASS' => [
+                'title' => 'Tax Class',
+                'value' => '0',
+                'desc' => 'Use the following tax class on the shipping fee.',
+                'use_func' => 'tep_get_tax_class_title',
+                'set_func' => 'tep_cfg_pull_down_tax_classes(',
+            ],
+            $this->config_key_base . 'ZONE' => [
+//('Zóna dopravy', 'MODULE_SHIPPING_BAL_ZONE', '0', 'Když je vybrána zóna, doprava se zobrazí pouze pro tuto zónu.', '6', '0', 'tep_get_zone_class_title', 'tep_cfg_pull_down_zone_classes(', now())");
+                'title' => 'Shipping Zone',
+                'value' => '0',
+                'desc' => 'If a zone is selected, only enable this shipping method for that zone.',
+                'use_func' => 'tep_get_zone_class_title',
+                'set_func' => 'tep_cfg_pull_down_zone_classes(',
+            ],
+            $this->config_key_base . 'SORT_ORDER' => [
+                'title' => 'Sort Order',
+                'value' => '0',
+                'desc' => 'Sort order of display.',
+            ],
+            $this->config_key_base . 'API_KEY' => [
+                'title' => 'Klíč API',
+                'value' => '145b247b34d4cf1a',
+                'desc' => 'Klíč api Zásilkovny',
+            ],
+//            $this->config_key_base . '' => [
+//('Pobočky', 'MODULE_SHIPPING_BAL_COUNTRY', 'Vše', 'Vyberte pobočky které země chcete, aby se zobrazovaly', '6', '0', 'tep_cfg_select_option(array(\'Česká republika\', \'Slovenská republika\', \'Vše\'), ', now())");
+//            ],
+            $this->config_key_base . 'PRODUCTION' => [
+                'title' => 'Use production API',
+                'value' => 'False',
+                'desc' => 'Put false here to use testing API servers.',
+                'set_func' => "tep_cfg_select_option(['True', 'False'], "
+            ]
+//title, 
+//key, 
+//value, 
+//description, 
+//group_id, 
+//sort_order            
+//set_function, date_added) values ('Povolit Zásilkovnu', 'MODULE_SHIPPING_ZAS_STATUS', 'Povolit', 'Chcete povolit používání Zásilkovny?', '6', '0', 'tep_cfg_select_option(array(\'Povolit\', \'Zakázat\'), ', now())");
+//date_added) values ('Klíč API', 'MODULE_SHIPPING_ZAS_API_KEY', '', '', '6', '0', now())");
+//date_added) values ('Cena', 'MODULE_SHIPPING_ZAS_COST', '5.00', 'Cena za dopravu.', '6', '0', now())");
+//set_function, date_added) values ('Pobočky', 'MODULE_SHIPPING_ZAS_COUNTRY', 'Vše', 'Vyberte pobočky které země chcete, aby se zobrazovaly', '6', '0', 'tep_cfg_select_option(array(\'Česká republika\', \'Slovenská republika\', \'Vše\'), ', now())");
+//use_function, set_function, date_added) values ('Daň', 'MODULE_SHIPPING_ZAS_TAX_CLASS', '0', '', '6', '0', 'tep_get_tax_class_title', 'tep_cfg_pull_down_tax_classes(', now())");
+//use_function, set_function, date_added) values ('Zóna dopravy', 'MODULE_SHIPPING_ZAS_ZONE', '0', 'Když je vybrána zóna, doprava se zobrazí pouze pro tuto zónu.', '6', '0', 'tep_get_zone_class_title', 'tep_cfg_pull_down_zone_classes(', now())");
+//date_added) values ('Řazení', 'MODULE_SHIPPING_ZAS_SORT_ORDER', '0', 'Řazení pro zobrazení při nákupu.', '6', '0', now())");
+        ];
     }
 
     function quote($method = '') {
@@ -150,47 +226,79 @@ class Zasilkovna extends abstract_shipping_module {
         $costAll = explode(',', MODULE_SHIPPING_ZAS_COST);
         foreach ($costAll as $costStr) {
             $costA = explode(':', trim($costStr));
-            $cost = (int) $costA[1]; //cena
+            $cost = count($costA) == 2 ? (int) $costA[1] : (int) $costA[0]; //cena TODO: undefined index 1
             if ($cart->show_total() < $costA[0])
                 break; //dolni limit ceny pro levnejsi tarif - pri nizsi hodnote break a nechat byt
         }
 
-
         $this->quotes = array('id' => $this->code,
             'module' => MODULE_SHIPPING_ZAS_TEXT_TITLE,
+            'custom' => $this->popUp(),
             'methods' => array(array('id' => $this->code,
                     'title' => MODULE_SHIPPING_ZAS_TEXT_WAY, //. $this->packeteryCode(),
                     'cost' => $cost /* MODULE_SHIPPING_ZAS_COST */))); //$cost
         $this->quote_common();
+
+        if (array_key_exists('shipping', $_SESSION) && ($_SESSION['shipping'] == 'zasilkovna_zasilkovna')) {
+            $zasilkovna_id = \Ease\WebPage::getRequestValue('zasilkovna_id');
+            if (empty($zasilkovna_id)) {
+                $this->quotes['error'] = 'Nebyla vybrána výdejna zásilkovny!';
+            } else {
+                $zasilkovna_id; //Todo save in order
+                $order->info['shipping_method'] = 'Zásilkovna: '.\Ease\WebPage::getRequestValue('zasilkovna');
+            }
+        }
+        
         return $this->quotes;
     }
 
-    function check() {
-        if (!isset($this->_check)) {
-            $check_query = tep_db_query("select configuration_value from configuration where configuration_key = 'MODULE_SHIPPING_ZAS_STATUS'");
-            $this->_check = tep_db_num_rows($check_query); //$this->_check = $check_query->RecordCount();
-        }
-        return $this->_check;
-    }
+    function popUp() {
+        return '
+        <script src="https://widget.packeta.com/www/js/library.js"></script>
+        <script>
+            var packetaApiKey = \'' . $this->api_key . '\';
+            /*
+             This function will receive either a pickup point object, or null if the user
+             did not select anything, e.g. if they used the close icon in top-right corner
+             of the widget, or if they pressed the escape key.
+             */
+            function showSelectedPickupPoint(point)
+            {
+                var spanElement = document.getElementById(\'packeta-point-info\');
+                var idElement = document.getElementById(\'packeta-point-id\');
+                if (point) {
+                    var recursiveToString = function (o) {
+                        return Object.keys(o).map(
+                                function (k) {
+                                    if (o[k] === null) {
+                                        return k + " = null";
+                                    }
 
-    function install($parameter_key = null) {
-        parent::install($parameter_key);
-        tep_db_query("insert into configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Povolit Zásilkovnu', 'MODULE_SHIPPING_ZAS_STATUS', 'Povolit', 'Chcete povolit používání Zásilkovny?', '6', '0', 'tep_cfg_select_option(array(\'Povolit\', \'Zakázat\'), ', now())");
-        tep_db_query("insert into configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Klíč API', 'MODULE_SHIPPING_ZAS_API_KEY', '', '', '6', '0', now())");
-        tep_db_query("insert into configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Cena', 'MODULE_SHIPPING_ZAS_COST', '5.00', 'Cena za dopravu.', '6', '0', now())");
-        tep_db_query("insert into configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Pobočky', 'MODULE_SHIPPING_ZAS_COUNTRY', 'Vše', 'Vyberte pobočky které země chcete, aby se zobrazovaly', '6', '0', 'tep_cfg_select_option(array(\'Česká republika\', \'Slovenská republika\', \'Vše\'), ', now())");
-        tep_db_query("insert into configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, use_function, set_function, date_added) values ('Daň', 'MODULE_SHIPPING_ZAS_TAX_CLASS', '0', '', '6', '0', 'tep_get_tax_class_title', 'tep_cfg_pull_down_tax_classes(', now())");
-//DELETED      tep_db_query("insert into configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Výpočet daně', 'MODULE_SHIPPING_ZAS_TAX_BASIS', 'Shipping', 'Na základě čeho je daň vypočítávána.', '6', '0', 'tep_cfg_select_option(array(\'Doprava\', \'Fakturace\', \'Obchod\'), ', now())");
-        tep_db_query("insert into configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, use_function, set_function, date_added) values ('Zóna dopravy', 'MODULE_SHIPPING_ZAS_ZONE', '0', 'Když je vybrána zóna, doprava se zobrazí pouze pro tuto zónu.', '6', '0', 'tep_get_zone_class_title', 'tep_cfg_pull_down_zone_classes(', now())");
-        tep_db_query("insert into configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Řazení', 'MODULE_SHIPPING_ZAS_SORT_ORDER', '0', 'Řazení pro zobrazení při nákupu.', '6', '0', now())");
-    }
+                                    return k + " = " + (typeof (o[k]) == "object"
+                                            ? "<ul><li>" + recursiveToString(o[k]) + "</li></ul>"
+                                            : o[k].toString().replace(/&/g, \'&amp;\').replace(/</g, \'&lt;\')
+                                            );
+                                }
+                        ).join("</li><li>");
+                    };
 
-    function remove() {
-        tep_db_query("delete from configuration where configuration_key like 'MODULE\_SHIPPING\_ZAS\_%'");
-    }
-
-    function keys() {
-        return array('MODULE_SHIPPING_ZAS_STATUS', 'MODULE_SHIPPING_ZAS_API_KEY', 'MODULE_SHIPPING_ZAS_COUNTRY', 'MODULE_SHIPPING_ZAS_COST', 'MODULE_SHIPPING_ZAS_TAX_CLASS', 'MODULE_SHIPPING_ZAS_TAX_BASIS', 'MODULE_SHIPPING_ZAS_ZONE', 'MODULE_SHIPPING_ZAS_SORT_ORDER');
+                    spanElement.innerText = "Address: " + point.name + "\n" + point.zip + " " + point.city;
+                    $("#packeta-point").val(point.name + " " + point.zip + " " + point.city);
+                    $("#packeta-point-id").val(point.id);
+                } else {
+                    $("#packeta-point").val("None");
+                    $("#packeta-point-id").val("");
+                }
+            }
+            ;
+        </script>
+' . '        <input type="button" onclick="Packeta.Widget.pick(packetaApiKey, showSelectedPickupPoint)" value="' . 'MODULE_SHIPPING_ZAS_TEXT_SELECT' . '...">
+        <p>' . 'MODULE_SHIPPING_ZAS_TEXT_SELECTED' . ':
+            <input type="hidden" name="zasilkovna_id" id="packeta-point-id">
+            <input type="hidden" name="zasilkovna" id="packeta-point">
+            <span id="packeta-point-info">None</span>
+        </p>
+';
     }
 
     function packeteryCode() {

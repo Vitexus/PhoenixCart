@@ -80,6 +80,9 @@
         foreach ($include_quotes as $q) {
           $quotes = $GLOBALS[$q]->quote($method);
           if (is_array($quotes)) {
+            if(array_key_exists('error', $quotes)){
+                $quotes_array['error'] = $quotes['error'];
+            }  
             $quotes_array[] = $quotes;
           }
         }

@@ -31,7 +31,7 @@ class Balikovna extends abstract_shipping_module {
         $this->sort_order = \Ease\Functions::cfg('MODULE_SHIPPING_BAL_SORT_ORDER');
         $this->api_key = \Ease\Functions::cfg('MODULE_SHIPPING_BAL_API_KEY');
         $this->country = \Ease\Functions::cfg('MODULE_SHIPPING_BAL_COUNTRY') == 'Vše' ? '' : ( \Ease\Functions::cfg('MODULE_SHIPPING_BAL_COUNTRY') == 'Slovenská republika' ? 'sk' : 'cz' );
-        $this->icon = 'images/apps/balikovna/Logo_Balik_Do_ruky.png';
+        $this->icon = 'images/apps/balikovna/balikovna.png';
         $this->tax_class = \Ease\Functions::cfg('MODULE_SHIPPING_BAL_TAX_CLASS');
 //DELETED      $this->tax_basis = MODULE_SHIPPING_ZAS_TAX_BASIS == 'Doprava' ? 'Shipping' : (MODULE_SHIPPING_ZAS_TAX_BASIS == 'Fakturace' ? 'Billing' : 'Store');
 
@@ -42,7 +42,7 @@ class Balikovna extends abstract_shipping_module {
           }
          */
 
-        $this->enabled = true;
+        $this->enabled = !empty($this->api_key);
 
         if (($this->enabled == true) && ((int) \Ease\Functions::cfg('MODULE_SHIPPING_BAL_ZONE') > 0)) {
             $check_flag = false;
@@ -75,6 +75,18 @@ class Balikovna extends abstract_shipping_module {
                 $this->enabled = false;
             }
         }
+
+
+        if ($_SESSION['shipping']['id'] == 'zasilkovna_zasilkovna') {
+            $zasilkovna_id = \Ease\WebPage::getRequestValue('zasilkovna_id');
+            if (empty($zasilkovna_id)) {
+                $this->quotes['error'] = 'Nebyla vybrána výdejna zásilkovny!';
+            } else {
+                $zasilkovna_id; //Todo save in order
+            }
+        }
+
+
 //TODO?	  if($order->info['shipping_module_code'] == 'zasilkovna_'.$this->code){
 //		  $order->info['shipping_method'] = $this->title . ' ('.$this->description.')';
 //	  }
@@ -83,7 +95,9 @@ class Balikovna extends abstract_shipping_module {
 // class methods
 
     /**
+     * Module Configuration
      * 
+     * @return array Module initial configuration
      */
     function get_parameters() {
 
@@ -168,33 +182,8 @@ class Balikovna extends abstract_shipping_module {
             $this->quotes['tax'] = tep_get_tax_rate($this->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
         }
 
-        if (tep_not_null($this->icon))
-            $this->quotes['icon'] = tep_image($this->icon, $this->title);
-
+        $this->quote_common();
         return $this->quotes;
-    }
-
-    function check() {
-        if (!isset($this->_check)) {
-            $check_query = tep_db_query("select configuration_value from configuration where configuration_key = 'MODULE_SHIPPING_BAL_STATUS'");
-            $this->_check = tep_db_num_rows($check_query); //$this->_check = $check_query->RecordCount();
-        }
-        return $this->_check;
-    }
-
-    /**
-     * Remove module configuration
-     */
-    function remove() {
-        tep_db_query("delete from configuration where configuration_key like 'MODULE\_SHIPPING\_BAL\_%'");
-    }
-
-    /**
-     * Module Keys
-     * @return array
-     */
-    function keys() {
-        return array('MODULE_SHIPPING_BAL_STATUS', 'MODULE_SHIPPING_BAL_API_KEY', 'MODULE_SHIPPING_BAL_COUNTRY', 'MODULE_SHIPPING_BAL_COST', 'MODULE_SHIPPING_BAL_TAX_CLASS', 'MODULE_SHIPPING_BAL_TAX_BASIS', 'MODULE_SHIPPING_BAL_ZONE', 'MODULE_SHIPPING_BAL_SORT_ORDER');
     }
 
     function packeteryCode() {

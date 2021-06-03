@@ -13,3 +13,6 @@
 
 const MODULE_SHIPPING_ZAS_TEXT_TITLE = 'Zasilkovna';
 const MODULE_SHIPPING_ZAS_TEXT_DESCRIPTION = 'zasilkovna.cz';
+const MODULE_SHIPPING_ZAS_TEXT_SELECT = 'Select point';
+const MODULE_SHIPPING_ZAS_TEXT_SELECTED = 'Select point';
+

@@ -16,7 +16,9 @@
         "adamstipak/webpay-php": "dev-master",
         "vitexsoftware/ease-fluentpdo": "*",
         "ondrakoupil/csob-eapi-paygate": "dev-master",
-        "robmorgan/phinx": "dev-master"
+        "robmorgan/phinx": "dev-master",
+        "kenguest/services-openstreetmap": "dev-master",
+        "netzmacht/php-leaflet": "1.2.x-dev"
     },
     "autoload": {
         "psr-4": {

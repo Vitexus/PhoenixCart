@@ -1,0 +1,152 @@
+<html>
+    <head>
+        <title>HERE & Leaflet</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+        <meta charset="UTF-8">
+        <style>
+            body, html { border: 0; padding: 0; margin: 0; }
+            #map { width: 100vw; height: 100vh; }
+        </style>
+    </head>
+    <body>
+        <div id="map"></div>
+        <script>
+
+            const here = {
+                apiKey: 'C5Fa0JpyWx4-K6eR-hh_TQiR4LOxTObwtG-6ZILGXbk'
+            }
+            const style = 'normal.day';
+
+            const hereTileUrl = `https://2.base.maps.ls.hereapi.com/maptile/2.1/maptile/newest/${style}/{z}/{x}/{y}/512/png8?apiKey=${here.apiKey}&ppi=320`;
+
+            const map = L.map('map', {
+                center: [50.073658, 14.418540],
+                zoom: 20,
+                layers: [L.tileLayer(hereTileUrl)]
+            });
+            map.attributionControl.addAttribution('&copy; PureHtml 2020');
+
+
+
+
+            var xmlFile = 'balikovny.xml';
+            function loadDoc() {
+                var xhttp = new XMLHttpRequest();
+
+                xhttp.open("GET", xmlFile, true);
+                xhttp.send();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState === 4 && this.status === 200) {
+                        placeBalikovnaToMap(this.response);
+                    }
+                };
+
+            }
+
+            function placeBalikovnaToMap(xml) {
+                /**                
+                 <generated>2021-06-02T17:52:12</generated>
+                 <row>
+                 <PSC>10003</PSC>
+                 <NAZEV>Depo Praha 701</NAZEV>
+                 <ADRESA>Sazečská 598/7, Malešice, 10800, Praha 10</ADRESA>
+                 <TYP>depo</TYP>
+                 <OTEV_DOBY>
+                 <den name="Pondělí">
+                 <od_do>
+                 <od>08:00</od>
+                 <do>20:00</do>
+                 </od_do>
+                 </den>
+                 <den name="Úterý">
+                 <od_do>
+                 <od>08:00</od>
+                 <do>20:00</do>
+                 </od_do>
+                 </den>
+                 <den name="Středa">
+                 <od_do>
+                 <od>08:00</od>
+                 <do>20:00</do>
+                 </od_do>
+                 </den>
+                 <den name="Čtvrtek">
+                 <od_do>
+                 <od>08:00</od>
+                 <do>20:00</do>
+                 </od_do>
+                 </den>
+                 <den name="Pátek">
+                 <od_do>
+                 <od>08:00</od>
+                 <do>20:00</do>
+                 </od_do>
+                 </den>
+                 <den name="Sobota"/>
+                 <den name="Neděle"/>
+                 </OTEV_DOBY>
+                 <SOUR_X>1044557.63</SOUR_X>
+                 <SOUR_Y>735997.36</SOUR_Y>
+                 <OBEC>Praha</OBEC>
+                 <C_OBCE>Malešice</C_OBCE>
+                 <SOUR_X_WGS84>14.518495</SOUR_X_WGS84>
+                 <SOUR_Y_WGS84>50.082016</SOUR_Y_WGS84>
+                 </row>
+                 <row>
+                 */
+
+
+                var parser = new DOMParser();
+                var xmlDoc = parser.parseFromString(xml, "text/xml");
+                var x = xmlDoc.getElementsByTagName("row");
+                for (var elem of x) {
+                    var title = elem.getElementsByTagName("NAZEV")[0].childNodes[0].nodeValue;
+                    var adresa = elem.getElementsByTagName("ADRESA")[0].childNodes[0].nodeValue;
+                    var X = elem.getElementsByTagName("SOUR_X_WGS84")[0].childNodes[0].nodeValue;
+                    var Y = elem.getElementsByTagName("SOUR_Y_WGS84")[0].childNodes[0].nodeValue;
+
+                    latlng = new L.LatLng(Y, X);
+
+                    var balikovna = new L.Marker(latlng, {
+                        icon: new L.DivIcon({
+                            className: 'my-div-icon',
+                            html: '<img class="my-div-image" src="https://localhost/PureHTML/PhoenixCart/images/apps/balikovna/balikovna.png"/>' +
+                                    '<span class="my-div-span" style="width: 64px;">' + title + '</span>'
+                        })
+                    });
+
+                    balikovna.addTo(map);
+
+
+
+                }
+
+
+
+
+            }
+            loadDoc();
+
+
+            navigator.geolocation.getCurrentPosition(function (location) {
+                var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
+                map.panTo(latlng);
+
+
+                var yourPosition = new L.Marker(latlng, {
+                    icon: new L.DivIcon({
+                        className: 'my-div-icon',
+                        html: '<img class="my-div-image" src="center.svg"/>' +
+                                '<span class="my-div-span" style="width: 64px;">Jste&nbsp;zde&nbsp;?</span>'
+                    })
+                });
+
+                yourPosition.addTo(map);
+
+            });
+
+
+        </script>
+    </body>
+</html>

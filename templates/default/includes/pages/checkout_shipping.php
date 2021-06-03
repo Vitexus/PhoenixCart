@@ -65,6 +65,11 @@
           if (tep_not_null($method['title'])) {
             echo '<div class="form-text">' . $method['title'] . '</div>';
           }
+          
+          if(array_key_exists('custom', $quote)  ){
+              echo $quote['custom'];
+          }
+          
 ?>
             </td>
             <?php

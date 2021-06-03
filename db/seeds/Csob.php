@@ -32,8 +32,8 @@ class Csob extends AbstractSeed {
         $this->execute("UPDATE configuration SET configuration_value = '0' WHERE configuration_key = 'MODULE_PAYMENT_CSOB_SORT_ORDER' ");
         $this->execute("UPDATE configuration SET configuration_value = '5' WHERE configuration_key = 'MODULE_PAYMENT_CSOB_ORDER_STATUS_ID' ");
         $this->execute("UPDATE configuration SET configuration_value = 'A52158l6SC' WHERE configuration_key = 'MODULE_PAYMENT_CSOB_MERCHANT_ID' ");
-        $this->execute("UPDATE configuration SET configuration_value = '/home/vitex/Projects/PureHTML/csob/keys/rsa_A52158l6SC.key' WHERE configuration_key = 'MODULE_PAYMENT_CSOB_SECRET_KEY' ");
-        $this->execute("UPDATE configuration SET configuration_value = '/home/vitex/Projects/PureHTML/csob/keys/mips_iplatebnibrana.csob.cz.pub' WHERE configuration_key = 'MODULE_PAYMENT_CSOB_PUBLIC_KEY' ");
+        $this->execute("UPDATE configuration SET configuration_value = 'keys/rsa_A52158l6SC.key' WHERE configuration_key = 'MODULE_PAYMENT_CSOB_SECRET_KEY' "); //TODO Auto Find
+        $this->execute("UPDATE configuration SET configuration_value = 'keys/mips_iplatebnibrana.csob.cz.pub' WHERE configuration_key = 'MODULE_PAYMENT_CSOB_PUBLIC_KEY' "); //TODO Auto Find
         $this->execute("UPDATE configuration SET configuration_value = '8' WHERE configuration_key = 'MODULE_PAYMENT_CSOB_PROCESSING_ORDER_STATUS_ID' ");
         $this->execute("UPDATE configuration SET configuration_value = '6' WHERE configuration_key = 'MODULE_PAYMENT_CSOB_DONE_ORDER_STATUS_ID' ");
         $this->execute("UPDATE configuration SET configuration_value = '7' WHERE configuration_key = 'MODULE_PAYMENT_CSOB_CANCELED_ORDER_STATUS_ID' ");
