@@ -24,3 +24,6 @@
 /debian/phoenix-cart-csob/
 /.vagrant/
 /.vscode/
+
+includes/configure.php
+admin/includes/configure.php
